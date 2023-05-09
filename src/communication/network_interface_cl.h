@@ -85,6 +85,13 @@ struct trans_info
   ONE_TRAN_INFO tran[1];	/* really [num_trans] */
 };
 
+typedef struct memmon_mem_info MEMMON_MEM_INFO;
+struct memmon_mem_info
+{
+	//int type;
+	char buf[1];	/* mem info */
+};
+
 extern int locator_fetch (OID * oidp, int chn, LOCK lock, LC_FETCH_VERSION_TYPE fetch_type, OID * class_oid,
 			  int class_chn, int prefetch, LC_COPYAREA ** fetch_copyarea);
 extern int locator_get_class (OID * class_oid, int class_chn, const OID * oid, LOCK lock, int prefetching,
@@ -283,6 +290,11 @@ extern int logtb_get_pack_tran_table (char **buffer_p, int *size_p, bool include
 extern void logtb_free_trans_info (TRANS_INFO * info);
 extern TRANS_INFO *logtb_get_trans_info (bool include_query_exec_info);
 extern void logtb_dump_trantable (FILE * outfp);
+extern int logtb_get_svr_meminfo (char **buffer_p, int *size_p, MEMMON_INFO_TYPE info_type,
+		             int module_index, char *module_name,	int display_size);
+
+extern MEMMON_MEM_INFO *logtb_get_memory_info (MEMMON_INFO_TYPE info_type, int module_index,
+		             char *module_name, int display_size);
 
 extern int heap_get_class_num_objects_pages (HFID * hfid, int approximation, int *nobjs, int *npages);
 

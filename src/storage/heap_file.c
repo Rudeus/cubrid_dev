@@ -71,6 +71,9 @@
 #include "log_append.hpp"
 #include "string_buffer.hpp"
 #include "tde.h"
+#if defined(SERVER_MODE)
+#include "memory_monitor.hpp"
+#endif
 
 #include <set>
 
@@ -1041,6 +1044,11 @@ heap_stats_add_bestspace (THREAD_ENTRY * thread_p, const HFID * hfid, VPID * vpi
   else
     {
       ent = (HEAP_STATS_ENTRY *) malloc (sizeof (HEAP_STATS_ENTRY));
+#if defined(SERVER_MODE)
+			// for test
+			cubperf::MMM_global->memmon_add_stat(sizeof(HEAP_STATS_ENTRY), cubperf::HEAP, thread_p);
+			cubperf::test_meminfo.fetch_add(sizeof(HEAP_STATS_ENTRY));
+#endif
       if (ent == NULL)
 	{
 	  er_set (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_OUT_OF_VIRTUAL_MEMORY, 1, sizeof (HEAP_STATS_ENTRY));
@@ -1391,6 +1399,11 @@ heap_classrepr_initialize_cache (void)
 
   heap_Classrepr_cache.area =
     (HEAP_CLASSREPR_ENTRY *) malloc (sizeof (HEAP_CLASSREPR_ENTRY) * heap_Classrepr_cache.num_entries);
+#if defined(SERVER_MODE)
+	// for test
+	cubperf::MMM_global->memmon_add_stat(sizeof(HEAP_CLASSREPR_ENTRY) * heap_Classrepr_cache.num_entries, cubperf::HEAP, NULL);
+	cubperf::test_meminfo.fetch_add(sizeof(HEAP_CLASSREPR_ENTRY) * heap_Classrepr_cache.num_entries);
+#endif
   if (heap_Classrepr_cache.area == NULL)
     {
       ret = ER_OUT_OF_VIRTUAL_MEMORY;
@@ -2430,6 +2443,11 @@ search_begin:
 
       /* Get free entry */
       cache_entry = heap_classrepr_entry_alloc ();
+#if defined(SERVER_MODE)
+			// for test
+			cubperf::MMM_global->memmon_add_stat(sizeof(*cache_entry), cubperf::HEAP, thread_p);
+			cubperf::test_meminfo.fetch_add(sizeof(*cache_entry));
+#endif
       if (cache_entry == NULL)
 	{
 	  /* if all cache entry is busy, return disk repr. */

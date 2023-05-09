@@ -7269,6 +7269,69 @@ slogtb_dump_trantable (THREAD_ENTRY * thread_p, unsigned int rid, char *request,
 }
 
 /*
+ * slogtb_get_svr_meminfo -
+ *
+ * return:
+ *
+ *   rid(in):
+ *   request(in):
+ *   reqlen(in):
+ */
+void
+slogtb_get_svr_meminfo (THREAD_ENTRY * thread_p, unsigned int rid, char *request, int reqlen)
+{
+  char *buffer, *ptr;
+  int size;
+  OR_ALIGNED_BUF (OR_INT_SIZE + OR_INT_SIZE) a_reply;
+  char *reply = OR_ALIGNED_BUF_START (a_reply);
+  int error;
+	MEMMON_INFO_TYPE info_type;
+  int type = 0, module_index = 0, display_size = 0, use_modindex = 0;
+  char *module_name = NULL;
+
+  (void) or_unpack_int (request, &type);
+	
+	info_type = (MEMMON_INFO_TYPE)type;
+
+	switch (info_type)
+	{
+		case MEMMON_INFO_MODTRANS:
+  		or_unpack_int (request, &display_size);
+		case MEMMON_INFO_MODULE:
+			or_unpack_int (request, &use_modindex);
+			if (use_modindex)
+				or_unpack_int (request, &module_index);
+			else
+				or_unpack_string (request, &module_name);
+			break;
+		case MEMMON_INFO_TRANSACTION:
+			or_unpack_int (request, &display_size);
+			break;
+		default:
+			break;
+	}
+
+  error = xlogtb_get_svr_meminfo (thread_p, &buffer, &size,
+		                          info_type, module_index, module_name, display_size);
+
+  if (error != NO_ERROR)
+    {
+      ptr = or_pack_int (reply, 0);
+      ptr = or_pack_int (ptr, error);
+      css_send_data_to_client (thread_p->conn_entry, rid, reply, OR_ALIGNED_BUF_SIZE (a_reply));
+    }
+  else
+    {
+      ptr = or_pack_int (reply, size);
+      ptr = or_pack_int (ptr, error);
+			fprintf(stdout, "size is %d\n", size);
+      css_send_data_to_client (thread_p->conn_entry, rid, reply, OR_ALIGNED_BUF_SIZE (a_reply));
+      css_send_data_to_client (thread_p->conn_entry, rid, buffer, size);
+      free_and_init (buffer);
+    }
+}
+
+/*
  * xcallback_console_print -
  *
  * return:

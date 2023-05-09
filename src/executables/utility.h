@@ -89,7 +89,8 @@ typedef enum
   MSGCAT_UTIL_SET_VACUUMDB = 55,
   MSGCAT_UTIL_SET_CHECKSUMDB = 56,
   MSGCAT_UTIL_SET_TDE = 57,
-  MSGCAT_UTIL_SET_FLASHBACK = 58
+  MSGCAT_UTIL_SET_FLASHBACK = 58,
+  MSGCAT_UTIL_SET_MEMMON = 59
 } MSGCAT_UTIL_SET;
 
 /* Message id in the set MSGCAT_UTIL_SET_GENERIC */
@@ -355,6 +356,28 @@ typedef enum
   TRANLIST_MSG_NOT_IN_STANDALONE = 59,
   TRANLIST_MSG_USAGE = 60
 } MSGCAT_TRANLIST_MSG;
+
+/* Message id in the set MSGCAT_UTIL_SET_MEMMON */
+typedef enum
+{
+  MEMMON_MSG_USER_PASSWORD = 20,
+  MEMMON_MSG_SUMMARY_HEADER = 22,
+  MEMMON_MSG_SUMMARY_UNDERSCORE = 23,
+  MEMMON_MSG_SUMMARY_ENTRY = 24,
+  MEMMON_MSG_NONE_TABLE_ENTRIES = 25,
+  MEMMON_MSG_NOT_DBA_USER = 26,
+  MEMMON_MSG_INVALID_SORT_KEY = 27,
+  MEMMON_MSG_QUERY_INFO_HEADER = 32,
+  MEMMON_MSG_QUERY_INFO_ENTRY = 33,
+  MEMMON_MSG_QUERY_INFO_UNDERSCORE = 34,
+  MEMMON_MSG_FULL_INFO_HEADER = 42,
+  MEMMON_MSG_FULL_INFO_ENTRY = 43,
+  MEMMON_MSG_FULL_INFO_UNDERSCORE = 44,
+  MEMMON_MSG_TRAN_INDEX = 45,
+  MEMMON_MSG_SQL_ID = 46,
+  MEMMON_MSG_NOT_IN_STANDALONE = 59,
+  MEMMON_MSG_USAGE = 60
+} MSGCAT_MEMMON_MSG;
 
 /* Message id in the set MSGCAT_UTIL_SET_KILLTRAN */
 typedef enum
@@ -785,6 +808,7 @@ typedef enum
   CHECKSUMDB,
   TDE,
   FLASHBACK,
+  MEMMON,
   LOGFILEDUMP,
 } UTIL_INDEX;
 
@@ -997,6 +1021,7 @@ typedef struct _ha_config
 #define UTIL_OPTION_CHECKSUMDB			"checksumdb"
 #define UTIL_OPTION_TDE			        "tde"
 #define UTIL_OPTION_FLASHBACK                   "flashback"
+#define UTIL_OPTION_MEMMON											"memmon"
 
 #define HIDDEN_CS_MODE_S                        15000
 
@@ -1253,6 +1278,17 @@ typedef struct _ha_config
 #define TRANLIST_FULL_SQL_S                     'f'
 #define TRANLIST_FULL_SQL_L                     "full"
 
+/* memmon option list */
+#define MEMMON_MODULE_S                       	'm'
+#define MEMMON_MODULE_L													"20123"
+#define MEMMON_TRANSACTION_S                  	't'
+#define MEMMON_TRANSACTION_L										"20124"
+#define MEMMON_DISPLAY_SIZE_S                 	'd'
+#define MEMMON_DISPLAY_SIZE_L                 	"display-size"
+#define MEMMON_SHOW_ALL_S                     	'a'
+#define MEMMON_SHOW_ALL_L												"20125"
+#define MEMMON_HELP_S                         	's'
+#define MEMMON_HELP_L														"20126"
 
 /* killtran option list */
 #define KILLTRAN_KILL_TRANSACTION_INDEX_S       'i'
@@ -1825,6 +1861,7 @@ extern "C"
   extern int checksumdb (UTIL_FUNCTION_ARG * arg_map);
   extern int tde (UTIL_FUNCTION_ARG * arg_map);
   extern int flashback (UTIL_FUNCTION_ARG * arg_map);
+	extern int memmon (UTIL_FUNCTION_ARG * arg_map);
 
   extern void util_admin_usage (const char *argv0);
   extern void util_admin_version (const char *argv0);

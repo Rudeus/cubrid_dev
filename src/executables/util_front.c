@@ -175,6 +175,15 @@ static ARG_MAP_TABLE ua_Tranlist_map[] = {
   {0, 0}
 };
 
+static ARG_MAP_TABLE ua_Memmon_map[] = {
+  {"-t", "--" MEMMON_TRANSACTION_L},
+  {"-m", "--" MEMMON_MODULE_L},
+  {"-a", "--" MEMMON_SHOW_ALL_L},
+  {"-h", "--" MEMMON_HELP_L},
+  {"-d", "--" MEMMON_DISPLAY_SIZE_L},
+  {0, 0}
+};
+
 static ARG_MAP_TABLE ua_Killtran_map[] = {
   {"-t", "--" KILLTRAN_KILL_TRANSACTION_INDEX_L},
   {"-u", "--" KILLTRAN_KILL_USER_NAME_L},
@@ -297,6 +306,7 @@ UTIL_MAP_TABLE ua_Util_table[] = {
   {"compactdb", UTIL_OPTION_COMPACTDB, ua_Compact_map},
   {"acldb", UTIL_OPTION_ACLDB, ua_Acldb_map},
   {"tranlist", UTIL_OPTION_TRANLIST, ua_Tranlist_map},
+	{"memmon", UTIL_OPTION_MEMMON, ua_Memmon_map},
   {0, 0, 0}
 };
 

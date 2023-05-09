@@ -455,6 +455,25 @@ static GETOPT_LONG ua_Tranlist_Option[] = {
   {0, 0, 0, 0}
 };
 
+static UTIL_ARG_MAP ua_Memmon_Option_Map[] = {
+  {OPTION_STRING_TABLE, {0}, {0}},
+  {MEMMON_MODULE_S, {ARG_STRING}, {0}},
+  {MEMMON_TRANSACTION_S, {ARG_BOOLEAN}, {0}},
+  {MEMMON_DISPLAY_SIZE_S, {ARG_INTEGER}, {0}},
+  {MEMMON_SHOW_ALL_S, {ARG_BOOLEAN}, {0}},
+  {MEMMON_HELP_S, {ARG_BOOLEAN}, {0}},
+  {0, {0}, {0}}
+};
+
+static GETOPT_LONG ua_Memmon_Option[] = {
+  {MEMMON_MODULE_L, 1, 0, MEMMON_MODULE_S},
+  {MEMMON_TRANSACTION_L, 0, 0, MEMMON_TRANSACTION_S},
+  {MEMMON_DISPLAY_SIZE_L, 1, 0, MEMMON_DISPLAY_SIZE_S},
+  {MEMMON_SHOW_ALL_L, 0, 0, MEMMON_SHOW_ALL_S},
+  {MEMMON_HELP_L, 0, 0, MEMMON_HELP_S},
+  {0, 0, 0, 0}
+};
+
 static UTIL_ARG_MAP ua_Load_Option_Map[] = {
   {OPTION_STRING_TABLE, {0}, {0}},
   {LOAD_USER_S, {ARG_STRING}, {0}},
@@ -935,6 +954,7 @@ static UTIL_MAP ua_Utility_Map[] = {
   {CHECKSUMDB, CS_ONLY, 1, UTIL_OPTION_CHECKSUMDB, "checksumdb", ua_Checksum_Option, ua_Checksum_Option_Map},
   {TDE, SA_CS, 1, UTIL_OPTION_TDE, "tde", ua_Tde_Option, ua_Tde_Option_Map},
   {FLASHBACK, CS_ONLY, 2, UTIL_OPTION_FLASHBACK, "flashback", ua_Flashback_Option, ua_Flashback_Option_Map},
+	{MEMMON, CS_ONLY, 1, UTIL_OPTION_MEMMON, "memmon", ua_Memmon_Option, ua_Memmon_Option_Map},
   {-1, -1, 0, 0, 0, 0, 0}
 };
 

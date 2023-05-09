@@ -62,6 +62,7 @@
 
 #include <unordered_set>
 #include <queue>
+#include <atomic>
 #include <assert.h>
 #if defined(SOLARIS)
 #include <netdb.h>		/* for MAXHOSTNAMELEN */
@@ -602,6 +603,10 @@ struct log_tdes
   log_postpone_cache m_log_postpone_cache;
 
   bool has_supplemental_log;	/* Checks if supplemental log has been appended within the transaction */
+//#if defined (MEMORY_MONITORING)
+	std::atomic<uint64_t> cur_meminfo;
+//#endif
+
 
   // *INDENT-OFF*
 #if defined (SERVER_MODE) || (defined (SA_MODE) && defined (__cplusplus))
@@ -1196,6 +1201,8 @@ extern int logtb_is_tran_modification_disabled (THREAD_ENTRY * thread_p);
 extern bool logtb_has_deadlock_priority (int tran_index);
 /* For Debugging */
 extern void xlogtb_dump_trantable (THREAD_ENTRY * thread_p, FILE * out_fp);
+
+extern LOG_TDES **xlogtb_get_trantable_nolatch (int *total_tran_indices);
 
 extern bool logpb_need_wal (const LOG_LSA * lsa);
 extern char *logpb_backup_level_info_to_string (char *buf, int buf_size, const LOG_HDR_BKUP_LEVEL_INFO * info);

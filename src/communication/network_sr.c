@@ -389,6 +389,9 @@ net_server_init (void)
   req_p = &net_Requests[NET_SERVER_LOG_CHECKPOINT];
   req_p->processing_function = slog_checkpoint;
 
+  req_p = &net_Requests[NET_SERVER_LOG_GET_MEMINFO];
+  req_p->processing_function = slogtb_get_svr_meminfo;
+
   req_p = &net_Requests[NET_SERVER_LOG_SET_SUPPRESS_REPL_ON_TRANSACTION];
   req_p->action_attribute = IN_TRANSACTION;
   req_p->processing_function = slogtb_set_suppress_repl_on_transaction;

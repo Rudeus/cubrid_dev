@@ -7881,6 +7881,91 @@ thread_dump_cs_stat (FILE * outfp)
 }
 
 /*
+ * logtb_get_svr_meminfo -
+ *
+ * return:
+ *
+ *   buffer_p(in):
+ *   size_p(in):
+ *   include_query_exec_info(in):
+ *
+ * NOTE:
+ */
+int
+logtb_get_svr_meminfo (char **buffer_p, int *size_p, MEMMON_INFO_TYPE info_type,
+		               int module_index, char *module_name,	int display_size)
+{
+#if defined(CS_MODE)
+  int error = NO_ERROR;
+  int req_error;
+  int ival;
+  OR_ALIGNED_BUF (OR_INT_SIZE) a_request;
+  char *request = OR_ALIGNED_BUF_START (a_request);
+  OR_ALIGNED_BUF (OR_INT_SIZE + OR_INT_SIZE) a_reply;
+  char *reply = OR_ALIGNED_BUF_START (a_reply);
+  char *ptr;
+  int type = (int)info_type;
+	int use_modindex = 0;
+
+  or_pack_int (request, type);
+	switch (info_type)
+	{
+		case MEMMON_INFO_MODTRANS:
+  		or_pack_int (request, display_size);
+		case MEMMON_INFO_MODULE:
+			if (module_index)
+			{
+				use_modindex = 1;
+				or_pack_int (request, use_modindex);
+				or_pack_int (request, module_index);
+			}
+			else
+			{
+				or_pack_int (request, use_modindex);
+				or_pack_string (request, module_name);
+			}
+			break;
+		case MEMMON_INFO_TRANSACTION:
+			or_pack_int (request, display_size);
+			break;
+		default:
+			break;
+	}
+
+  req_error =
+    net_client_request2 (NET_SERVER_LOG_GET_MEMINFO, request, OR_ALIGNED_BUF_SIZE (a_request), reply,
+			 OR_ALIGNED_BUF_SIZE (a_reply), NULL, 0, buffer_p, size_p);
+  if (req_error)
+    {
+      assert (er_errid () != NO_ERROR);
+      error = er_errid ();
+    }
+  else
+    {
+      /* first word is buffer size, second is error code */
+      ptr = reply;
+      ptr = or_unpack_int (ptr, &ival);
+      ptr = or_unpack_int (ptr, &ival);
+      error = (int) ival;
+    }
+
+	fprintf(stdout, "receive size is %d\n", *size_p);
+  return error;
+#else /* CS_MODE */ //TODO: 실구현때 마무리
+  int error;
+
+  THREAD_ENTRY *thread_p = enter_server ();
+
+  error = xlogtb_get_pack_tran_table (thread_p, buffer_p, size_p, 0);
+
+  exit_server (*thread_p);
+
+  return error;
+#endif /* !CS_MODE */
+}
+
+
+/*
  * logtb_get_pack_tran_table -
  *
  * return:
@@ -7994,6 +8079,93 @@ logtb_free_trans_info (TRANS_INFO * info)
 	}
     }
   free_and_init (info);
+}
+
+/*
+ * logtb_get_memory_info - Get memory monitoring information from MMM
+ * include_query_exec_info(in) :
+ *   return: TRANS_INFO array or NULL
+ */
+MEMMON_MEM_INFO *
+logtb_get_memory_info (MEMMON_INFO_TYPE info_type, int module_index, char *module_name, int display_size)
+{
+  MEMMON_MEM_INFO *info = NULL;
+  char *buffer, *ptr;
+  int num_trans, bufsize, i;
+  int error;
+
+  error = logtb_get_svr_meminfo (&buffer, &bufsize, info_type, module_index,
+		                          module_name, display_size);
+  if (error != NO_ERROR || buffer == NULL)
+    {
+      return NULL;
+    }
+
+  ptr = buffer;
+
+  //i = sizeof (MEMMON_MEM_INFO) + ((num_trans - 1) * sizeof (ONE_TRAN_INFO));
+  info = (MEMMON_MEM_INFO *) malloc (bufsize); //이렇게하면안되는이유?
+  if (info == NULL)
+    {
+      er_set (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_OUT_OF_VIRTUAL_MEMORY, 1, (size_t) i);
+      goto error;
+    }
+	fprintf(stdout, "copy bufsize is %d\n", bufsize);
+  memset (info, '\0', bufsize);
+  memcpy (info, buffer, bufsize);
+
+  // 버퍼를 통채로 읽어오는 방법?
+  /*info->num_trans = num_trans;
+  info->include_query_exec_info = include_query_exec_info;
+  for (i = 0; i < num_trans; i++)
+    {
+      int unpack_int_value;
+      ptr = or_unpack_int (ptr, &info->tran[i].tran_index);
+      ptr = or_unpack_int (ptr, &unpack_int_value);
+      info->tran[i].state = (TRAN_STATE) unpack_int_value;
+      ptr = or_unpack_int (ptr, &info->tran[i].process_id);
+      ptr = or_unpack_string (ptr, &info->tran[i].db_user);
+      ptr = or_unpack_string (ptr, &info->tran[i].program_name);
+      ptr = or_unpack_string (ptr, &info->tran[i].login_name);
+      ptr = or_unpack_string (ptr, &info->tran[i].host_name);
+      if (ptr == NULL)
+	{
+	  assert (false);
+	  goto error;
+	}
+
+      if (include_query_exec_info)
+	{
+	  ptr = or_unpack_float (ptr, &info->tran[i].query_exec_info.query_time);
+	  ptr = or_unpack_float (ptr, &info->tran[i].query_exec_info.tran_time);
+	  ptr = or_unpack_string (ptr, &info->tran[i].query_exec_info.wait_for_tran_index_string);
+	  ptr = or_unpack_string (ptr, &info->tran[i].query_exec_info.query_stmt);
+	  ptr = or_unpack_string (ptr, &info->tran[i].query_exec_info.sql_id);
+	  if (ptr == NULL)
+	    {
+	      assert (false);
+	      goto error;
+	    }
+	  OR_UNPACK_XASL_ID (ptr, &info->tran[i].query_exec_info.xasl_id);
+	}
+    }*/
+
+  free_and_init (buffer);
+
+  return info;
+
+error:
+  if (buffer != NULL)
+    {
+      free_and_init (buffer);
+    }
+
+  if (info != NULL)
+    {
+      //logtb_free_trans_info (info);
+    }
+
+  return NULL;
 }
 
 /*

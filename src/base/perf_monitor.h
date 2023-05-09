@@ -38,6 +38,7 @@
 #include "storage_common.h"
 #include "thread_compat.hpp"
 #include "tsc_timer.h"
+#include "memory_monitor.hpp"
 
 #include <assert.h>
 #include <stdio.h>

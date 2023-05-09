@@ -164,6 +164,7 @@ extern void sthread_kill_or_interrupt_tran (THREAD_ENTRY * thread_p, unsigned in
 extern void sthread_dump_cs_stat (THREAD_ENTRY * thread_p, unsigned int rid, char *request, int reqlen);
 extern void slogtb_get_pack_tran_table (THREAD_ENTRY * thread_p, unsigned int rid, char *request, int reqlen);
 extern void slogtb_dump_trantable (THREAD_ENTRY * thread_p, unsigned int rid, char *request, int reqlen);
+extern void slogtb_get_svr_meminfo (THREAD_ENTRY * thread_p, unsigned int rid, char *request, int reqlen);
 
 extern int xcallback_console_print (THREAD_ENTRY * thread_p, char *print_str);
 

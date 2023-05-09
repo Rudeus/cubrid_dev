@@ -1864,6 +1864,205 @@ error_exit:
 }
 
 /*
+ *	return: -1(dup error) 0(no matching type) 1(show_all) 2(module) 3(transaction)
+ *			 4(module+transaction) 5(default) 6(help)
+ */
+MEMMON_INFO_TYPE
+memmon_get_info_type(bool show_all, bool module, bool transaction, bool help)
+{
+  if ((show_all && (module || transaction || help)) || help && (module || transaction))
+	  return MEMMON_INFO_DUPERR;
+  else if (!(show_all || module || transaction || help))
+	  return MEMMON_INFO_DEFAULT;
+  else if (module && transaction)
+	  return MEMMON_INFO_MODTRANS;
+  else if (module)
+	  return MEMMON_INFO_MODULE;
+  else if (transaction)
+	  return MEMMON_INFO_TRANSACTION;
+  else if (show_all)
+	  return MEMMON_INFO_SHOWALL;
+  else if (help)
+	  return MEMMON_INFO_HELP;
+  else
+	  return MEMMON_INFO_NOMATCHING_TYPE;
+
+}
+
+/*
+ * memmon() - Memory Monitoring Utility
+ *   return: EXIT_SUCCESS/EXIT_FAILURE
+ */
+int
+memmon (UTIL_FUNCTION_ARG * arg)
+{
+#if defined (CS_MODE)
+  UTIL_ARG_MAP *arg_map = arg->arg_map;
+  char er_msg_file[PATH_MAX];
+  const char *database_name;
+  char *passbuf = NULL;
+  MEMMON_MEM_INFO *info = NULL;
+  int error;
+  char *module_name = NULL;
+  int display_size = 0;
+  int module_index = -1;
+  MEMMON_INFO_TYPE info_type;
+  bool module, transaction, show_all, help, default_op = false;
+  //TRANDUMP_LEVEL dump_level = TRANDUMP_MEM_INFO;
+
+	fprintf(stdout, "memmon start\n");
+  if (utility_get_option_string_table_size (arg_map) != 1)
+    {
+      goto print_memmon_usage;
+    }
+
+  database_name = utility_get_option_string_value (arg_map, OPTION_STRING_TABLE, 0);
+  if (database_name == NULL)
+    {
+      goto print_memmon_usage;
+    }
+
+  // parsed command setting
+  module = utility_get_option_bool_value (arg_map, MEMMON_MODULE_S);
+  transaction = utility_get_option_bool_value (arg_map, MEMMON_TRANSACTION_S);
+  show_all = utility_get_option_bool_value (arg_map, MEMMON_SHOW_ALL_S);
+  help = utility_get_option_bool_value (arg_map, MEMMON_HELP_S);
+
+  if (check_database_name (database_name) != NO_ERROR)
+    {
+      goto error_exit;
+    }
+
+  // if multi-command with -a, error return
+  info_type = memmon_get_info_type(show_all, module, transaction, help);
+  if (info_type <= 0)
+	goto error_exit;
+  
+  if (module)
+    {
+	  module_index = utility_get_option_int_value (arg_map, MEMMON_MODULE_S);
+	  
+	  if (module_index == 0)
+	  	module_name = utility_get_option_string_value (arg_map, OPTION_STRING_TABLE, 1);
+
+	  if (module_name == NULL)
+		goto error_exit;
+	}
+
+  if (transaction)
+	{
+      display_size = utility_get_option_int_value (arg_map, MEMMON_DISPLAY_SIZE_S);
+	}
+
+  /* error message log file */
+  snprintf (er_msg_file, sizeof (er_msg_file) - 1, "%s_%s.err", database_name, arg->command_name);
+  er_init (er_msg_file, ER_NEVER_EXIT);
+
+#if 0
+#if defined(NEED_PRIVILEGE_PASSWORD)
+  error = db_restart_ex (arg->command_name, database_name, username, password, NULL, DB_CLIENT_TYPE_ADMIN_UTILITY);
+  if (error != NO_ERROR)
+    {
+      char msg_buf[64];
+
+      if (error == ER_AU_INVALID_PASSWORD && password == NULL)
+	{
+	  /*
+	   * prompt for a valid password and try again, need a reusable
+	   * password prompter so we can use getpass() on platforms that
+	   * support it.
+	   */
+	  snprintf (msg_buf, 64,
+		    msgcat_message (MSGCAT_CATALOG_UTILS, MSGCAT_UTIL_SET_TRANLIST, TRANLIST_MSG_USER_PASSWORD),
+		    username);
+
+	  passbuf = getpass (msg_buf);
+
+	  if (passbuf[0] == '\0')
+	    {
+	      passbuf = (char *) NULL;
+	    }
+	  password = passbuf;
+
+	  error =
+	    db_restart_ex (arg->command_name, database_name, username, password, NULL, DB_CLIENT_TYPE_ADMIN_UTILITY);
+	}
+
+      if (error != NO_ERROR)
+	{
+	  PRINT_AND_LOG_ERR_MSG ("%s\n", db_error_string (3));
+	  goto error_exit;
+	}
+    }
+
+  if (!au_is_dba_group_member (Au_user))
+    {
+      PRINT_AND_LOG_ERR_MSG (msgcat_message (MSGCAT_CATALOG_UTILS, MSGCAT_UTIL_SET_TRANLIST, TRANLIST_MSG_NOT_DBA_USER),
+			     username);
+      db_shutdown ();
+      goto error_exit;
+    }
+#else
+  AU_DISABLE_PASSWORDS ();
+  db_set_client_type (DB_CLIENT_TYPE_ADMIN_UTILITY);
+  if (db_login ("DBA", NULL) || db_restart (arg->command_name, TRUE, database_name))
+    {
+      PRINT_AND_LOG_ERR_MSG ("%s: %s. \n\n", arg->command_name, db_error_string (3));
+      goto error_exit;
+    }
+#endif
+#endif
+  AU_DISABLE_PASSWORDS ();
+  db_set_client_type (DB_CLIENT_TYPE_ADMIN_UTILITY);
+  if (db_login ("DBA", NULL) || db_restart (arg->command_name, TRUE, database_name))
+    {
+      PRINT_AND_LOG_ERR_MSG ("%s: %s. \n\n", arg->command_name, db_error_string (3));
+      goto error_exit;
+    }
+
+  /*
+   * Get the current state of transaction table information. All the
+   * transaction kills are going to be based on this information. The
+   * transaction information may be changed back in the server if there
+   * are new transactions starting and finishing. We need to do this way
+   * since verification is required at this level, and we cannot freeze the
+   * state of the server ()transaction table).
+   */
+  info = logtb_get_memory_info (info_type, module_index, module_name, display_size);
+  if (info == NULL)
+    {
+      util_log_write_errstr ("%s\n", db_error_string (3));
+      db_shutdown ();
+      goto error_exit;
+    }
+
+  fprintf(stdout, "%s", info->buf);
+  //(void) dump_trantb (info, dump_level, false);
+
+  /*if (info)
+    {
+      logtb_free_trans_info (info);
+    }*/
+
+  (void) db_shutdown ();
+  return EXIT_SUCCESS;
+
+print_memmon_usage:
+  /*fprintf (stderr, msgcat_message (MSGCAT_CATALOG_UTILS, MSGCAT_UTIL_SET_MEMMON, MEMMON_MSG_USAGE),
+	   basename (arg->argv0));
+  util_log_write_errid (MSGCAT_UTIL_GENERIC_INVALID_ARGUMENT);*/
+
+error_exit:
+  return EXIT_FAILURE;
+#else /* CS_MODE */
+  /*PRINT_AND_LOG_ERR_MSG (msgcat_message (MSGCAT_CATALOG_UTILS, MSGCAT_UTIL_SET_MEMMON,
+					 MEMMON_MSG_NOT_IN_STANDALONE), basename (arg->argv0));*/
+  return EXIT_FAILURE;
+#endif /* !CS_MODE */
+}
+
+
+/*
  * killtran() - killtran main routine
  *   return: EXIT_SUCCESS/EXIT_FAILURE
  */

@@ -87,6 +87,7 @@
 #if defined(SERVER_MODE)
 #include "connection_sr.h"
 #include "server_support.h"
+//#include "memory_monitor.hpp"
 #endif /* SERVER_MODE */
 
 #if defined(WINDOWS)
@@ -167,6 +168,7 @@ static char boot_Server_session_key[SERVER_SESSION_KEY_SIZE];
 static bool boot_Set_server_at_exit = false;
 static int boot_Server_process_id = 1;
 #endif /* SERVER_MODE */
+//cubperf::MMM *MMM_global = NULL;
 
 
 /* Functions */
@@ -2774,6 +2776,9 @@ boot_restart_server (THREAD_ENTRY * thread_p, bool print_restart, const char *db
   json_set_alloc_funcs (malloc, free);
 #endif
 
+#if defined(SERVER_MODE)
+	cubperf::MMM_global = new cubperf::MMM(db_name);
+#endif
   return NO_ERROR;
 
 error:

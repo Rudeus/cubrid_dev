@@ -245,7 +245,10 @@ extern void xlock_dump (THREAD_ENTRY * thread_p, FILE * outfp);
 
 extern int xlogtb_get_pack_tran_table (THREAD_ENTRY * thread_p, char **buffer_p, int *size_p,
 				       int include_query_exec_info);
-
+#ifdef SERVER_MODE
+extern int xlogtb_get_svr_meminfo (THREAD_ENTRY * thread_p, char **buffer_p, int *size_p,
+		                MEMMON_INFO_TYPE type, int module_index, char *module_name, int display_size);
+#endif
 extern int xboot_compact_db (THREAD_ENTRY * thread_p, OID * class_oids, int n_classes, int space_to_process,
 			     int instance_lock_timeout, int class_lock_timeout, bool delete_old_repr,
 			     OID * last_processed_class_oid, OID * last_processed_oid, int *total_objects,

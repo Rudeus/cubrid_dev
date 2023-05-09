@@ -71,7 +71,6 @@ static void abort_handler (int signo, siginfo_t * siginfo, void *dummyp);
 static const char *database_name = "";
 
 static char executable_path[PATH_MAX];
-
 #if !defined(WINDOWS)
 /*
  * unmask_signal(): unmask the given signal

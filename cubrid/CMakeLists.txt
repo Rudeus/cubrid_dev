@@ -114,6 +114,7 @@ set(BASE_SOURCES
   ${BASE_DIR}/pinnable_buffer.cpp
   ${BASE_DIR}/pinning.cpp
   ${BASE_DIR}/perf_monitor.c
+	${BASE_DIR}/memory_monitor.cpp
   ${BASE_DIR}/porting.c
   ${BASE_DIR}/printer.cpp
   ${BASE_DIR}/process_util.c
@@ -155,6 +156,8 @@ set (BASE_HEADERS
   ${BASE_DIR}/packer.hpp
   ${BASE_DIR}/perf.hpp
   ${BASE_DIR}/perf_def.hpp
+  ${BASE_DIR}/perf_monitor.h
+	${BASE_DIR}/memory_monitor.hpp
   ${BASE_DIR}/pinning.hpp
   ${BASE_DIR}/pinnable_buffer.hpp
   ${BASE_DIR}/porting_inline.hpp

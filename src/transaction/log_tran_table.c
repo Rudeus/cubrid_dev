@@ -78,6 +78,9 @@
 #include "xasl.h"
 #include "xasl_cache.h"
 #include "method_runtime_context.hpp"
+#if defined (SERVER_MODE) || defined (CS_MODE)
+#include "memory_monitor.hpp"
+#endif
 
 #define RMUTEX_NAME_TDES_TOPOP "TDES_TOPOP"
 
@@ -1458,6 +1461,22 @@ xlogtb_dump_trantable (THREAD_ENTRY * thread_p, FILE * out_fp)
 }
 
 /*
+ * xlogtb_get_trantable_nolatch - dump the transaction table
+ *
+ * return: trantable list
+ *
+ * Note: Dump the transaction state table.
+ *              This function is used for debugging purposes.
+ */
+LOG_TDES **
+xlogtb_get_trantable_nolatch (int *total_tran_indices)
+{
+	*total_tran_indices = NUM_TOTAL_TRAN_INDICES;
+
+	return log_Gl.trantable.all_tdes;
+}
+
+/*
  * logtb_free_tran_mvcc_info - free transaction MVCC info
  *
  * return: nothing..
@@ -2413,6 +2432,47 @@ error:
 
   return error_code;
 }
+
+#if defined(SERVER_MODE)
+/*
+ * xlogtb_get_svr_meminfo - return server memory info stored on MMM
+ *
+ * return: NO_ERROR if all OK, ER status otherwise
+ *
+ *   buffer_p(in/out): returned buffer poitner
+ *   size_p(in/out): returned buffer size
+ *
+ *       The buffer is allocated using malloc and must be freed by the
+ *       caller.
+ */
+int
+xlogtb_get_svr_meminfo (THREAD_ENTRY * thread_p, char **buffer_p, int *size_p,
+		                MEMMON_INFO_TYPE type, int module_index, char *module_name, int display_size)
+{
+  int error_code = NO_ERROR;
+  char *buffer;
+
+  buffer = cubperf::MMM_global->print_meminfo(type, module_index, module_name, display_size);
+
+  // for test
+  //buffer = (char *)malloc(4096);
+	//memset(buffer, 0, 4096);
+  //sprintf(buffer, "hello world\n");
+	fprintf(stdout, "send success\n");
+
+  if (buffer == NULL)
+  {
+		error_code = ER_OUT_OF_VIRTUAL_MEMORY;
+		goto error;
+  }
+
+  *buffer_p = buffer;
+  *size_p = strlen(buffer);
+
+error:
+  return error_code;
+}
+#endif
 
 /*
  * logtb_find_current_client_type - find client type of current transaction
