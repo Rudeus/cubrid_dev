@@ -299,6 +299,14 @@ namespace cubperf
 		  }
 		/* XXX: add error if subcomp_idx > MAX_SUBCOMP_IDX */
 	      }
+	    else
+	      {
+		assert (info[idx].subcomp_name == NULL);
+	      }
+	  }
+	else
+	  {
+	    assert (info[idx].comp_name == NULL);
 	  }
 
 	m_comp_idx_map.push_back (make_stat_idx_map (comp_idx, subcomp_idx));
