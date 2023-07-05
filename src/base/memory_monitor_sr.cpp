@@ -133,7 +133,7 @@ namespace cubperf
   {
     public:
       memory_monitor (const char *server_name)
-	: m_aggregater (this), m_server_name (server_name) {}
+	: m_aggregator (this), m_server_name (server_name) {}
       memory_monitor (const memory_monitor &) = delete;
       memory_monitor (memory_monitor &&) = delete;
 
@@ -152,17 +152,17 @@ namespace cubperf
       inline int get_subcomp_idx_from_comp_idx_map (int comp_idx_map_val);
 
     private:
-      class aggregater
+      class aggregator
       {
 	public:
-	  aggregater (memory_monitor *mmon);
-	  aggregater (const aggregater &) = delete;
-	  aggregater (aggregater &&) = delete;
+	  aggregator (memory_monitor *mmon);
+	  aggregator (const aggregator &) = delete;
+	  aggregator (aggregator &&) = delete;
 
-	  ~aggregater () {}
+	  ~aggregator () {}
 
-	  aggregater &operator = (const aggregater &) = delete;
-	  aggregater &operator = (aggregater &&) = delete;
+	  aggregator &operator = (const aggregator &) = delete;
+	  aggregator &operator = (aggregator &&) = delete;
 
 	  int get_server_info (const MMON_SERVER_INFO &info);
 	  int get_module_info (const MMON_MODULE_INFO &info, int module_index);
@@ -175,7 +175,7 @@ namespace cubperf
     private:
       std::string m_server_name;
       std::atomic<uint64_t> m_total_mem_usage;
-      aggregater m_aggregater;
+      aggregator m_aggregator;
 
       std::unique_ptr<mmon_module> m_module[MMON_MODULE_LAST];
   };
@@ -260,18 +260,18 @@ namespace cubperf
   {
     /* register component and subcomponent information
      * add component and subcomponent */
-    int cnt = 0;
-    while (info[cnt].id != MMON_STAT_LAST)
+    int idx = 0;
+    while (info[idx].id != MMON_STAT_LAST)
       {
 	bool comp_skip = false;
 	bool subcomp_skip = false;
 	int comp_idx = mmon_module::MAX_COMP_IDX, subcomp_idx = mmon_module::MAX_COMP_IDX;
 
-	if (info[cnt].comp_name)
+	if (info[idx].comp_name)
 	  {
 	    for (size_t i = 0; i < m_component.size (); i++)
 	      {
-		if (!strcmp (info[cnt].comp_name, m_component[i]->get_name ()))
+		if (!strcmp (info[idx].comp_name, m_component[i]->get_name ()))
 		  {
 		    comp_idx = i;
 		    comp_skip = true;
@@ -281,13 +281,13 @@ namespace cubperf
 
 	    if (!comp_skip)
 	      {
-		comp_idx = add_component (info[cnt].comp_name);
+		comp_idx = add_component (info[idx].comp_name);
 	      }
 	    /* XXX: add error if comp_idx > MAX_COMP_IDX */
 
-	    if (info[cnt].subcomp_name)
+	    if (info[idx].subcomp_name)
 	      {
-		subcomp_idx = m_component[comp_idx]->get_subcomp_index (info[cnt].subcomp_name);
+		subcomp_idx = m_component[comp_idx]->get_subcomp_index (info[idx].subcomp_name);
 		if (subcomp_idx != -1)
 		  {
 		    subcomp_skip = true;
@@ -295,7 +295,7 @@ namespace cubperf
 
 		if (!subcomp_skip)
 		  {
-		    subcomp_idx = m_component[comp_idx]->add_subcomponent (info[cnt].subcomp_name);
+		    subcomp_idx = m_component[comp_idx]->add_subcomponent (info[idx].subcomp_name);
 		  }
 		/* XXX: add error if subcomp_idx > MAX_SUBCOMP_IDX */
 	      }
@@ -303,7 +303,7 @@ namespace cubperf
 
 	m_comp_idx_map.push_back (make_stat_idx_map (comp_idx, subcomp_idx));
 
-	cnt++;
+	idx++;
       }
   }
 
@@ -338,22 +338,22 @@ namespace cubperf
     return 0;
   }
 
-  memory_monitor::aggregater::aggregater (memory_monitor *mmon)
+  memory_monitor::aggregator::aggregator (memory_monitor *mmon)
   {
     m_mmon = mmon;
   }
 
-  int memory_monitor::aggregater::get_server_info (const MMON_SERVER_INFO &info)
+  int memory_monitor::aggregator::get_server_info (const MMON_SERVER_INFO &info)
   {
     return 0;
   }
 
-  int memory_monitor::aggregater::get_module_info (const MMON_MODULE_INFO &info, int module_index)
+  int memory_monitor::aggregator::get_module_info (const MMON_MODULE_INFO &info, int module_index)
   {
     return 0;
   }
 
-  int memory_monitor::aggregater::get_transaction_info (const MMON_TRAN_INFO &info, int tran_count)
+  int memory_monitor::aggregator::get_transaction_info (const MMON_TRAN_INFO &info, int tran_count)
   {
     return 0;
   }
