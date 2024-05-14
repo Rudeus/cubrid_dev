@@ -26,6 +26,8 @@
 #include "dbtype_def.h"                 // OID, DB_LOGICAL
 
 #include "query_evaluator.h"            // FILTER_INFO, QPROC_QUALIFICATION, scan_attrs
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 struct db_value;
@@ -130,5 +132,5 @@ using UPDDEL_MVCC_COND_REEVAL = cubquery::upddel_mvcc_cond_reeval;
 using MVCC_UPDDEL_REEV_DATA = cubquery::mvcc_update_reev_data;
 using MVCC_SCAN_REEV_DATA = cubquery::mvcc_scan_reev_data;
 using MVCC_REEV_DATA = cubquery::mvcc_reev_data;
-
+#undef new
 #endif // _QUERY_REEVALUATION_HPP_

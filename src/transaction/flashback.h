@@ -40,6 +40,8 @@
 #include "oid.h"
 #include "connection_defs.h"
 #include "log_manager.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define FLASHBACK_MAX_NUM_TRAN_TO_SUMMARY (prm_get_integer_value(PRM_ID_FLASHBACK_MAX_TRANSACTION))
 
@@ -134,5 +136,5 @@ extern void flashback_set_request_done_time ();
 extern void flashback_set_status_active ();
 extern void flashback_set_status_inactive ();
 extern void flashback_reset ();
-
+#undef new
 #endif /* _FLASHBACK_H_ */

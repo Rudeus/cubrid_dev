@@ -59,8 +59,8 @@
 #include <stack>
 
 #include <cstring>
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 /* The maximum number of slots in a page if all of them are empty.
  * IO_MAX_PAGE_SIZE is used for page size and any headers are ignored (it

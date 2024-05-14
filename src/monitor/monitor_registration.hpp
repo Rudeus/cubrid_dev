@@ -46,6 +46,8 @@
 #include <functional>
 #include <string>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmonitor
 {
@@ -142,5 +144,5 @@ namespace cubmonitor
   }
 
 } // namespace cubmonitor
-
+#undef new
 #endif // _MONITOR_REGISTRATION_HPP_

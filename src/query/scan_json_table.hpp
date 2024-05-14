@@ -76,6 +76,8 @@
 #include "storage_common.h"
 
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 // access_json_table.hpp
@@ -169,5 +171,5 @@ namespace cubscan
 
 // naming convention of SCAN_ID's
 using JSON_TABLE_SCAN_ID = cubscan::json_table::scanner;
-
+#undef new
 #endif // _SCAN_JSON_TABLE_HPP_

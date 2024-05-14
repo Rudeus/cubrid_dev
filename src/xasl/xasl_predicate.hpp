@@ -25,6 +25,8 @@
 
 #include "dbtype_def.h"             // DB_TYPE
 #include "string_regex.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 class regu_variable_node;
@@ -169,5 +171,5 @@ using COMP_EVAL_TERM = cubxasl::comp_eval_term;
 using ALSM_EVAL_TERM = cubxasl::alsm_eval_term;
 using LIKE_EVAL_TERM = cubxasl::like_eval_term;
 using RLIKE_EVAL_TERM = cubxasl::rlike_eval_term;
-
+#undef new
 #endif // _XASL_PREDICATE_HPP_

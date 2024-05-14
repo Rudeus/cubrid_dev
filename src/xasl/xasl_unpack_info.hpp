@@ -26,6 +26,8 @@
 #include "porting.h"
 #include "system.h"
 #include "thread_compat.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 const size_t MAX_PTR_BLOCKS = 256;
 
@@ -90,5 +92,5 @@ xasl_stream_get_ptr_block (const void *ptr)
 {
   return static_cast<int> ((((UINTPTR) ptr) / sizeof (UINTPTR)) % MAX_PTR_BLOCKS);
 }
-
+#undef new
 #endif // !_XASL_UNPACK_INFO_HPP_

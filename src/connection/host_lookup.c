@@ -45,8 +45,8 @@
 #include "environment_variable.h"
 #include "message_catalog.h"
 #include "host_lookup.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 #define LINE_BUF_SIZE                (512)
 #define HOSTNAME_LEN                 (256)

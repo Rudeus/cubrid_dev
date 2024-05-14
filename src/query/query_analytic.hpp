@@ -28,6 +28,8 @@
 #endif // not server and not SA
 
 #include "system.h"               // QUERY_ID
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 struct val_descr;
@@ -45,5 +47,5 @@ namespace cubxasl
 int qdata_initialize_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, QUERY_ID query_id);
 int qdata_evaluate_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, val_descr *vd);
 int qdata_finalize_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, bool is_same_group);
-
+#undef new
 #endif // _QUERY_ANALYTIC_HPP_

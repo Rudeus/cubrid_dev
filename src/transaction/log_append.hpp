@@ -38,6 +38,8 @@
 
 #include <atomic>
 #include <mutex>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward declarations
 struct log_tdes;
@@ -211,5 +213,5 @@ LOG_RV_RECORD_UPDPARTIAL_ALIGNED_SIZE (size_t new_data_size)
 {
   return DB_ALIGN (new_data_size + OR_SHORT_SIZE + 2 * OR_BYTE_SIZE, INT_ALIGNMENT);
 }
-
+#undef new
 #endif // !_LOG_APPEND_HPP_

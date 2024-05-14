@@ -36,6 +36,8 @@
 #include <thread>
 
 #include <cassert>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 // from adjustable_array.h
@@ -474,4 +476,5 @@ int thread_suspend_with_other_mutex (cubthread::entry *p, pthread_mutex_t *mutex
 const char *thread_type_to_string (thread_type type);
 const char *thread_status_to_string (cubthread::entry::status status);
 const char *thread_resume_status_to_string (thread_resume_suspend_status resume_status);
+#undef new
 #endif // _THREAD_ENTRY_HPP_

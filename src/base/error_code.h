@@ -41,6 +41,8 @@
 // suppress warning C4005: 'NO_ERROR': macro redefinition
 #include "winerror.h"
 #endif // MSVC
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #ifdef NO_ERROR
 #undef NO_ERROR
@@ -1752,5 +1754,5 @@
  * cci repository source (src/cci/base_error_code.h) must be updated,
  * becuase CCI source and Engine source have been separated.
  */
-
+#undef new
 #endif /* _ERROR_CODE_H_ */

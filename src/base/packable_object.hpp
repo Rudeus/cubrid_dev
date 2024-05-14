@@ -26,6 +26,8 @@
 #ident "$Id$"
 
 #include "packer.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubpacking
 {
@@ -47,5 +49,5 @@ namespace cubpacking
   };
 
 } /* namespace cubpacking */
-
+#undef new
 #endif /* _PACKABLE_OBJECT_HPP_ */

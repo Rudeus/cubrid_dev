@@ -24,6 +24,8 @@
 #define _THREAD_WORKER_POOL_TASKCAP_HPP_
 
 #include "thread_worker_pool.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubthread
 {
@@ -172,5 +174,5 @@ namespace cubthread
     m_capper.end_task ();
   }
 }
-
+#undef new
 #endif // !_THREAD_WORKER_POOL_TASKCAP_HPP_

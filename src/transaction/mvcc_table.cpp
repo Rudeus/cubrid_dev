@@ -29,8 +29,8 @@
 #include "thread_manager.hpp"
 
 #include <cassert>
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 // help debugging oldest active by following all changes
 struct oldest_active_event

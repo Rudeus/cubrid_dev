@@ -20,6 +20,8 @@
 #define _DB_JSON_PRIVATE_ALLOCATOR_
 
 #include "db_rapidjson.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 class JSON_PRIVATE_ALLOCATOR
 {
@@ -31,5 +33,5 @@ class JSON_PRIVATE_ALLOCATOR
 };
 
 typedef rapidjson::MemoryPoolAllocator <JSON_PRIVATE_ALLOCATOR> JSON_PRIVATE_MEMPOOL;
-
+#undef new
 #endif

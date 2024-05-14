@@ -31,8 +31,8 @@
 #include "intl_support.h"
 #include "uca_support.h"
 #include "unicode_support.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 #if defined (SUPPRESS_STRLEN_WARNING)
 #define strlen(s1)  ((int) strlen(s1))

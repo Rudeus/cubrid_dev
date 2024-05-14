@@ -26,6 +26,9 @@
 
 #include <atomic>
 #include <cstddef>
+#include <cassert>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -128,7 +131,6 @@ namespace lockfree
 //
 // implementation
 //
-#include <cassert>
 
 namespace lockfree
 {

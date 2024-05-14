@@ -31,6 +31,8 @@
 #include "lockfree_transaction_def.hpp"
 
 #include <limits>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definition
 namespace lockfree
@@ -97,5 +99,5 @@ namespace lockfree
     };
   } // namespace tran
 } // namespace lockfree
-
+#undef new
 #endif // !_LOCKFREE_TRANSACTION_DESCRIPTOR_HPP_

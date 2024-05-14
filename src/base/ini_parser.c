@@ -26,8 +26,8 @@
 #include "porting.h"
 #include "ini_parser.h"
 #include "chartype.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 #define INI_BUFSIZ         	(512)
 #define INI_INVALID_KEY		((char*)-1)

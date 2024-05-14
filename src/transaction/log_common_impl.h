@@ -31,6 +31,8 @@
 #include "release_string.h"
 #include "storage_common.h"
 #include "system.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /************************************************************************/
 /* Section shared with client... TODO: remove any code accessing log    */
@@ -67,5 +69,5 @@ extern int logtb_collect_local_clients (int **local_client_pids);
 /************************************************************************/
 /* End of part shared with client.                                      */
 /************************************************************************/
-
+#undef new
 #endif // _LOG_COMMON_IMPL_H_

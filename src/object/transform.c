@@ -38,8 +38,8 @@
 #include "language_support.h"
 #include "system_catalog.h"
 #endif /* !CS_MODE */
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 /*
  * These define the structure of the meta class objects

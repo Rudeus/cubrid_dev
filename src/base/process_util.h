@@ -23,9 +23,11 @@
 
 #ifndef _PROCESS_UTIL_H_
 #define _PROCESS_UTIL_H_
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 int
 create_child_process (const char *const argv[], int wait_flag, const char *stdin_file, char *stdout_file,
 		      char *stderr_file, int *exit_status);
-
+#undef new
 #endif /* _PROCESS_UTIL_H_ */

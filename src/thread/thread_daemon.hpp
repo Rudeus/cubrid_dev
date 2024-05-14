@@ -33,6 +33,8 @@
 #include <thread>
 
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // cubthread::daemon
 //
@@ -196,5 +198,5 @@ namespace cubthread
   }
 
 } // namespace cubthread
-
+#undef new
 #endif // _THREAD_DAEMON_HPP_

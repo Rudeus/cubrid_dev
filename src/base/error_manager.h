@@ -40,6 +40,8 @@
 #endif /* SERVER_MODE */
 
 #include "error_code.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define ARG_FILE_LINE           __FILE__, __LINE__
 #define ARG_FILE_LINE_FUNC      __FILE__, __LINE__, __func__
@@ -355,5 +357,5 @@ namespace cuberr
 // NOTE - if used after jumps, expect "crosses initialization" errors
 #define ER_SAFE_INIT(msg_file, exit_arg) cuberr::manager cuberr_manager (msg_file, exit_arg)
 #endif				// c++
-
+#undef new
 #endif				/* _ERROR_MANAGER_H_ */

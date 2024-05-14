@@ -26,6 +26,8 @@
 #include <cstddef>
 
 #include <stack>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cuberr
 {
@@ -114,5 +116,5 @@ namespace cuberr
       bool m_destroyed;                             // set to true on destruction
   };
 } // namespace cuberr
-
+#undef new
 #endif // _ERROR_CONTEXT_HPP_

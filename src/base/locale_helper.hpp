@@ -29,6 +29,8 @@
 #include <locale>
 #include <codecvt>
 #include <string>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* TODO: need to make compatible fully between CUBRID Language support and cpp standard locale */
 namespace cublocale
@@ -43,5 +45,5 @@ namespace cublocale
   bool convert_utf8_to_wstring (std::wstring &out, const std::string &in);
   bool convert_wstring_to_utf8 (std::string &out, const std::wstring &in);
 }
-
+#undef new
 #endif /* _LOCALE_HELPER_HPP_ */

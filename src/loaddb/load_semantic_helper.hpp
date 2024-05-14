@@ -27,6 +27,8 @@
 #include "mem_block.hpp"
 
 #include <forward_list>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -133,5 +135,5 @@ namespace cubload
       T *append_list (T *head, T *tail);
   }; // class semantic_helper
 }
-
+#undef new
 #endif /* _LOAD_SEMANTIC_HELPER_HPP_ */

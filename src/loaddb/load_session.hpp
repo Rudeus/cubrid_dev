@@ -37,6 +37,8 @@
 #include <set>
 #include <string>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -180,5 +182,5 @@ namespace cubload
       }
   }
 }
-
+#undef new
 #endif /* _LOAD_SESSION_HPP_ */

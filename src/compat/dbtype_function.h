@@ -27,6 +27,8 @@
 
 #include "db_set_function.h"
 #include "dbtype_def.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define DB_CURRENCY_DEFAULT db_get_currency_default()
 
@@ -397,5 +399,5 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif				/* C++ */
-
+#undef new
 #endif				/* _NO_INLINE_DBTYPE_FUNCTION_ */

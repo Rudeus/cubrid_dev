@@ -31,6 +31,8 @@
 
 #include <mutex>
 #include "vacuum.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 class ovfp_monitor_lock final
 {
@@ -136,4 +138,5 @@ class ovfp_threshold_mgr
     }
 };
 #endif // #if defined (SERVER_MODE)
+#undef new
 #endif /* _OVFP_THRESHOLD_MONITOR_H_ */

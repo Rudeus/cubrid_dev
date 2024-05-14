@@ -22,6 +22,8 @@
 
 #ifndef _MSGCAT_SET_LOG_HPP_
 #define _MSGCAT_SET_LOG_HPP_
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /*
  * Message id in the set MSGCAT_SET_LOG
@@ -57,5 +59,5 @@
 #define MSGCAT_LOG_UPTODATE_ERROR                       28
 #define MSGCAT_LOG_LOGINFO_COMMENT_UNUSED_ARCHIVE_NAME	29
 #define MSGCAT_LOG_MAX_ARCHIVES_HAS_BEEN_EXCEEDED	30
-
+#undef new
 #endif // _MSGCAT_SET_LOG_HPP_

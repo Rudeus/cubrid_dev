@@ -29,6 +29,8 @@
 // forward definition for THREAD_ENTRY
 #if defined (SERVER_MODE) || (defined (SA_MODE) && defined (__cplusplus))
 #include <thread>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 #ifndef _THREAD_ENTRY_HPP_
 namespace cubthread
 {
@@ -42,6 +44,7 @@ typedef std::thread::id thread_id_t;
 // client or SA_MODE annoying grammars
 typedef void THREAD_ENTRY;
 typedef unsigned long int thread_id_t;
+#undef new
 #endif // not SERVER_MODE and not SA_MODE
 
 #endif // _THREAD_COMPAT_HPP_

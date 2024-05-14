@@ -33,6 +33,8 @@
 
 #include <cassert>
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubthread
 {
@@ -190,5 +192,5 @@ namespace cubthread
   }
 
 } // namespace cubthread
-
+#undef new
 #endif // _THREAD_WAITER_HPP_

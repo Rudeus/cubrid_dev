@@ -29,6 +29,8 @@
 #include "dbtype_def.h"
 
 #include <time.h>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* DB_DATE functions */
 extern int db_date_weekday (DB_DATE * date);
@@ -109,5 +111,5 @@ extern int db_get_day_of_week (int year, int month, int day);
 extern int db_get_week_of_year (int year, int month, int day, int mode);
 extern int db_check_time_date_format (const char *format_s);
 extern int db_add_weeks_and_days_to_date (int *day, int *month, int *year, int weeks, int day_week);
-
+#undef new
 #endif /* _DB_DATE_H_ */

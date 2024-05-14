@@ -26,6 +26,8 @@
 #include "dbtype_def.h"
 #include "storage_common.h"
 #include "query_list.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 class regu_variable_node;
@@ -144,4 +146,5 @@ range_reverse (RANGE &range)
       break;
     }
 }
+#undef new
 #endif // _ACCESS_SPEC_HPP_

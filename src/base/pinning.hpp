@@ -29,6 +29,8 @@
 #include <assert.h>
 #include <cstddef>
 #include "error_code.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubbase
 {
@@ -86,5 +88,5 @@ namespace cubbase
   };
 
 } /* namespace cubbase */
-
+#undef new
 #endif /* _PINNING_HPP_ */

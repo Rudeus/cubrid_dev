@@ -142,7 +142,8 @@ STATIC_INLINE DB_TYPE db_value_domain_type (const DB_VALUE * value) __attribute_
 #endif // !NO_INLINE_DBTYPE_FUNCTION
 
 #include <assert.h>
-#include "memory_cwrapper.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /*
  * db_get_int() -
@@ -2215,3 +2216,4 @@ db_value_domain_type (const DB_VALUE * value)
 
   return (DB_TYPE) value->domain.general_info.type;
 }
+#undef new

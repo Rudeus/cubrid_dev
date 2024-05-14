@@ -33,6 +33,8 @@
 #include "load_semantic_helper.hpp"
 
 #include <istream>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -103,5 +105,5 @@ namespace cubload
   }; // class driver
 
 } // namespace cubload
-
+#undef new
 #endif /* _LOAD_DRIVER_HPP_ */

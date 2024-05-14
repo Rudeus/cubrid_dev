@@ -31,6 +31,8 @@
 #include "recovery.h"
 #include "storage_common.h"
 #include "system.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 enum log_rectype
 {
@@ -465,5 +467,5 @@ struct log_rec_supplement
    || ((type) == LOG_MVCC_REDO_DATA) \
    || ((type) == LOG_MVCC_UNDOREDO_DATA) \
    || ((type) == LOG_MVCC_DIFF_UNDOREDO_DATA))
-
+#undef new
 #endif // _LOG_RECORD_HPP_

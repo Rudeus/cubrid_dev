@@ -104,6 +104,8 @@ void stx_restore (THREAD_ENTRY *thread_p, char *&ptr, T *&target);
 #include "system.h"
 
 #include <cassert>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 inline int
 xasl_stream_make_align (int x)
@@ -172,5 +174,5 @@ static void stx_alloc_array (THREAD_ENTRY *thread_p, T *&ptr, std::size_t count)
 {
   ptr = (T *) stx_alloc_struct (thread_p, (int) (count * sizeof (T)));
 }
-
+#undef new
 #endif // _XASL_STREAM_HPP_

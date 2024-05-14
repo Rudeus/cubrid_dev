@@ -75,8 +75,8 @@
 #include "tde.h"
 
 #include <set>
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 #if !defined(SERVER_MODE)
 #define pthread_mutex_init(a, b)

@@ -80,5 +80,8 @@ inline void operator delete [] (void *ptr, size_t sz) noexcept
 #define new new(__FILE__, __LINE__)
 #endif // SERVER_MODE
 #endif // !WINDOWS
-
+#else // _MEMORY_WRAPPER_HPP_
+#if defined (SERVER_MODE) && !defined(WINDOWS)
+//#define new new(__FILE__, __LINE__)
+#endif
 #endif // _MEMORY_WRAPPER_HPP_

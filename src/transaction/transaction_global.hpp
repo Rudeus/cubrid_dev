@@ -24,8 +24,10 @@
 #define _TRANSACTION_GLOBAL_HPP_
 
 #include "storage_common.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 const int LOG_SYSTEM_TRAN_INDEX = 0;	/* The recovery & vacuum worker system transaction index. */
 const TRANID LOG_SYSTEM_TRANID = 0;	/* The recovery & vacuum worker system transaction. */
-
+#undef new
 #endif // _TRANSACTION_GLOBAL_HPP_

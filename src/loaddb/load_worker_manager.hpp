@@ -26,6 +26,8 @@
 #include "system.h"
 #include "thread_manager.hpp"
 #include "thread_worker_pool.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -40,5 +42,5 @@ namespace cubload
 
   void worker_manager_get_stats (UINT64 *stats_out);
 }
-
+#undef new
 #endif /* _LOAD_WORKER_MANAGER_HPP_ */

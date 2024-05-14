@@ -29,6 +29,8 @@ struct xasl_node;
 // note - file should be compatible to C language
 
 #include "sha1.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /*
  * COMPILE_CONTEXT cover from user input query string to generated xasl
@@ -50,4 +52,5 @@ struct compile_context
   bool recompile_xasl;
   SHA1Hash sha1;
 };
+#undef new
 #endif // _COMPILE_CONTEXT_H_

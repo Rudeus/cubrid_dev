@@ -27,6 +27,8 @@
 #include <chrono>
 
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // perf module basic types and classes
 //
@@ -142,5 +144,5 @@ namespace cubperf
   using atomic_stat_counter_and_timer = generic_stat_counter_and_timer<true>;
 
 } // namespace cubperf
-
+#undef new
 #endif // _PERF_DEF_HPP_

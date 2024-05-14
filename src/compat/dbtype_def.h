@@ -28,6 +28,8 @@
 
 #include "error_code.h"
 #include <stdint.h>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #ifdef __cplusplus
 extern "C"
@@ -1258,5 +1260,5 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif				/* __cplusplus */
-
+#undef new
 #endif				/* _DBTYPE_DEF_H_ */

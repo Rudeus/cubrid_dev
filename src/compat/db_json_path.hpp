@@ -30,6 +30,8 @@
 #include <string>
 #include <unordered_set>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 struct PATH_TOKEN
 {
@@ -117,4 +119,5 @@ class JSON_PATH
 };
 
 int db_json_path_unquote_object_keys (std::string &sql_path);
+#undef new
 #endif /* _DB_JSON_HPP_ */

@@ -30,6 +30,8 @@
 #define _LOCKFREE_TRANSACTION_RECLAIMABLE_HPP_
 
 #include "lockfree_transaction_def.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -71,5 +73,5 @@ namespace lockfree
     };
   } // namespace tran
 } // namespace lockfree
-
+#undef new
 #endif // !_LOCKFREE_TRANSACTION_RECLAIMABLE_HPP_

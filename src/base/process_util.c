@@ -36,8 +36,8 @@
 #include <sys/wait.h>
 #include <signal.h>
 #endif
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 int
 create_child_process (const char *const argv[], int wait_flag, const char *stdin_file, char *stdout_file,

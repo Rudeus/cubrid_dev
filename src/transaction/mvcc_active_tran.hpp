@@ -27,6 +27,8 @@
 
 #include <cassert>
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 struct mvcc_active_tran
 {
@@ -112,5 +114,5 @@ struct mvcc_active_tran
     void set_bitarea_mvccid (MVCCID mvccid);
     void cleanup_migrate_to_long_transations ();
 };
-
+#undef new
 #endif // !_MVCC_ACTIVE_TRAN_HPP_

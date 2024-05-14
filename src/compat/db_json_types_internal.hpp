@@ -21,6 +21,8 @@
 
 #include "db_json_allocator.hpp"
 #include "db_rapidjson.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #if defined GetObject
 /* stupid windows and their definitions; GetObject is defined as GetObjectW or GetObjectA */
@@ -66,5 +68,5 @@ class JSON_DOC : public rapidjson::GenericDocument <JSON_ENCODING, JSON_PRIVATE_
 
 JSON_VALUE &db_json_doc_to_value (JSON_DOC &doc);
 const JSON_VALUE &db_json_doc_to_value (const JSON_DOC &doc);
-
+#undef new
 #endif // !_DB_JSON_TYPES_INTERNAL_HPP

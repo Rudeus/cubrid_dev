@@ -22,6 +22,8 @@
 
 #ifndef _DB_FUNCTION_HPP_
 #define _DB_FUNCTION_HPP_
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 typedef enum
 {
@@ -86,5 +88,5 @@ const char *fcode_get_uppercase_name (FUNC_CODE ftype);
 # ifdef  __cplusplus
 }
 # endif
-
+#undef new
 #endif // _DB_FUNCTION_HPP_

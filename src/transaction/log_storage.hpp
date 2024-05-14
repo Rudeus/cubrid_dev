@@ -32,6 +32,8 @@
 #include "tde.h"
 
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* Definitions for flags in LOG_HDRPAGE */
 
@@ -251,4 +253,5 @@ struct log_arv_header
   {
   }
 };
+#undef new
 #endif // !_LOG_STORAGE_HPP_

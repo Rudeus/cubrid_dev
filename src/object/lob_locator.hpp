@@ -22,6 +22,8 @@
 
 #ifndef _LOB_LOCATOR_HPP_
 #define _LOB_LOCATOR_HPP_
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* there can be following transitions in transient lobs
 
@@ -69,5 +71,5 @@ int lob_locator_drop (const char *locator);
 bool lob_locator_is_valid (const char *locator);
 const char *lob_locator_key (const char *locator);      // pointer in locator to key
 const char *lob_locator_meta (const char *locator);     // pointer in locator to meta
-
+#undef new
 #endif // _LOB_LOCATOR_HPP_

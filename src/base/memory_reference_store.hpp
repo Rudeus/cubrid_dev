@@ -24,6 +24,8 @@
 #define _MEMORY_REFERENCE_STORE_HPP_
 
 #include <algorithm>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmem
 {
@@ -161,5 +163,5 @@ namespace cubmem
     clear ();
   }
 }
-
+#undef new
 #endif // _MEMORY_REFERENCE_STORE_HPP_

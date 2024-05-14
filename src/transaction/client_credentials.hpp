@@ -28,6 +28,8 @@
 #include "packable_object.hpp"
 
 #include <string>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* BOOT_CLIENT_TYPE : needed for legacy code */
 typedef enum db_client_type BOOT_CLIENT_TYPE;
@@ -100,5 +102,5 @@ struct boot_client_credential : public clientids
   virtual void pack (cubpacking::packer &serializator) const override;
   virtual void unpack (cubpacking::unpacker &deserializator) override;
 };
-
+#undef new
 #endif // !_CLIENT_CREDENTIALS_HPP_

@@ -24,6 +24,8 @@
 #define _QUERY_MONITORING_HPP_
 
 #include "storage_common.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 typedef struct tran_query_exec_info TRAN_QUERY_EXEC_INFO;
 struct tran_query_exec_info
@@ -35,5 +37,5 @@ struct tran_query_exec_info
   char *sql_id;
   XASL_ID xasl_id;
 };
-
+#undef new
 #endif // !_QUERY_MONITORING_HPP_

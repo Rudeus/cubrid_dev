@@ -25,6 +25,8 @@
 
 #include "mem_block.hpp"
 #include "memory_alloc.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 namespace cubthread
@@ -363,5 +365,5 @@ namespace cubmem
 } // namespace cubmem
 
 
-
+#undef new
 #endif // _MEMORY_PRIVATE_ALLOCATOR_HPP_

@@ -32,6 +32,8 @@
 #include "thread_compat.hpp"
 
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* MVCC RECORD HEADER */
 typedef struct mvcc_rec_header MVCC_REC_HEADER;
@@ -269,5 +271,5 @@ extern MVCC_SATISFIES_DELETE_RESULT mvcc_satisfies_delete (THREAD_ENTRY * thread
 extern MVCC_SATISFIES_SNAPSHOT_RESULT mvcc_satisfies_dirty (THREAD_ENTRY * thread_p, MVCC_REC_HEADER * rec_header,
 							    MVCC_SNAPSHOT * snapshot);
 extern bool mvcc_is_mvcc_disabled_class (const OID * class_oid);
-
+#undef new
 #endif /* _MVCC_H_ */

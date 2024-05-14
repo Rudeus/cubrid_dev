@@ -29,6 +29,8 @@
 #include <cassert>
 #include <functional>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define NUM_LDR_TYPES (LDR_TYPE_MAX + 1)
 #define NUM_DB_TYPES (DB_TYPE_LAST + 1)
@@ -435,5 +437,5 @@ using load_status = cubload::load_status;
 	 (strncasecmp ((class_name), "glo", MAX(strlen(class_name), 3)) == 0      || \
 	  strncasecmp ((class_name), "glo_name", MAX(strlen(class_name), 8)) == 0  || \
 	  strncasecmp ((class_name), "glo_holder", MAX(strlen(class_name), 10)) == 0)
-
+#undef new
 #endif /* _LOAD_COMMON_HPP_ */

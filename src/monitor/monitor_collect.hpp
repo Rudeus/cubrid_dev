@@ -26,6 +26,8 @@
 #include "monitor_registration.hpp"
 #include "monitor_statistic.hpp"
 #include "monitor_transaction.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmonitor
 {
@@ -563,5 +565,5 @@ namespace cubmonitor
   }
 
 } // namespace cubmonitor
-
+#undef new
 #endif // _MONITOR_COLLECT_HPP_

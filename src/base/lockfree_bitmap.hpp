@@ -24,6 +24,8 @@
 #define _LOCKFREE_BITMAP_HPP_
 
 #include <atomic>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -88,5 +90,5 @@ static const LF_BITMAP_STYLE LF_BITMAP_LIST_OF_CHUNKS = LF_BITMAP_STYLE::LIST_OF
 
 #define LF_BITMAP_COUNT_ALIGN(count) \
     (((count) + (LF_BITFIELD_WORD_SIZE) - 1) & ~((LF_BITFIELD_WORD_SIZE) - 1))
-
+#undef new
 #endif // !_LOCKFREE_BITMAP_HPP_

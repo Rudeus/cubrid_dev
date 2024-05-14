@@ -32,8 +32,8 @@
 #include "porting.h"
 #include "error_code.h"
 #include "environment_variable.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 /* available root directory symbols; NULL terminated array */
 static const char envvar_Prefix_name[] = "CUBRID";

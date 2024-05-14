@@ -25,6 +25,8 @@
 
 #include "dbtype_def.h"
 #include "storage_common.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 struct qfile_list_id;
@@ -110,5 +112,5 @@ using AGGREGATE_TYPE = cubxasl::aggregate_list_node;
 using AGGREGATE_DIST_PERCENT_INFO = cubxasl::aggregate_dist_percent_info;
 using AGGREGATE_ACCUMULATOR_DOMAIN = cubxasl::aggregate_accumulator_domain;
 #endif // server or SA mode
-
+#undef new
 #endif // _XASL_AGGREGATE_HPP_

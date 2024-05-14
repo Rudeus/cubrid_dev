@@ -26,6 +26,8 @@
 
 #include <forward_list>
 #include <functional>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // todo - namespace cubtx
 
@@ -101,5 +103,5 @@ int xtx_change_state_of_locator (cubthread::entry *thread_p, const char *locator
 				 LOB_LOCATOR_STATE state);
 int xtx_drop_lob_locator (cubthread::entry *thread_p, const char *locator);
 void tx_lob_locator_clear (cubthread::entry *thread_p, log_tdes *tdes, bool at_commit, LOG_LSA *savept_lsa);
-
+#undef new
 #endif // !_TRANSACTION_TRANSIENT_HPP_

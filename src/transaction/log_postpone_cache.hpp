@@ -29,6 +29,8 @@
 #include "storage_common.h"
 
 #include <array>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward declarations
 struct log_tdes;
@@ -97,5 +99,5 @@ class log_postpone_cache
 
     bool is_full () const;
 };
-
+#undef new
 #endif /* _LOG_POSTPONE_CACHE_HPP_ */

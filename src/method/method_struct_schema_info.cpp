@@ -19,8 +19,8 @@
 #include "method_struct_schema_info.hpp"
 
 #include "language_support.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 namespace cubmethod
 {

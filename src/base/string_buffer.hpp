@@ -42,6 +42,8 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <functional>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 class string_buffer
 {
@@ -148,5 +150,5 @@ template<typename... Args> int string_buffer::operator() (Args &&... args)
 
   return len;
 }
-
+#undef new
 #endif /* _STRING_BUFFER_HPP_ */

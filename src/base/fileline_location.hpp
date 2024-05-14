@@ -24,6 +24,8 @@
 #define _FILELINE_LOCATION_HPP_
 
 #include <iostream>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubbase
 {
@@ -52,5 +54,5 @@ namespace cubbase
 
   std::ostream &operator<< (std::ostream &os, const fileline_location &fileline);
 } // namespace cubbase
-
+#undef new
 #endif // _FILELINE_LOCATION_HPP_

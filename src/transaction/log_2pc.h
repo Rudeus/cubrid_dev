@@ -33,6 +33,8 @@
 #include "thread_compat.hpp"
 
 #include <cstdio>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward declarations
 struct log_tdes;
@@ -94,5 +96,5 @@ void log_2pc_recovery_analysis_info (THREAD_ENTRY * thread_p, log_tdes * tdes, L
 void log_2pc_recovery (THREAD_ENTRY * thread_p);
 bool log_2pc_is_tran_distributed (log_tdes * tdes);
 bool log_2pc_clear_and_is_tran_distributed (log_tdes * tdes);
-
+#undef new
 #endif // !_LOG_2PC_H_

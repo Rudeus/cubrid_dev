@@ -29,6 +29,8 @@
 #include "pinning.hpp"
 #include <atomic>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /*
  * This should serve as storage for packing / unpacking objects
@@ -78,5 +80,5 @@ namespace cubmem
   };
 
 } /* namespace mem */
-
+#undef new
 #endif /* _PINNABLE_BUFFER_HPP_ */

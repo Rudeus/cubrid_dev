@@ -25,6 +25,8 @@
 
 #include <atomic>
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -166,4 +168,5 @@ namespace lockfree
     return address_marker (addr).get_address ();
   }
 } // namespace lockfree
+#undef new
 #endif // !_LOCKFREE_ADDRESS_MARKER_HPP_

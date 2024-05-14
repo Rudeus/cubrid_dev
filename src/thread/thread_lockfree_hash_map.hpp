@@ -28,6 +28,8 @@
 #include "lockfree_transaction_def.hpp"
 #include "system_parameter.h"
 #include "thread_entry.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubthread
 {
@@ -357,5 +359,5 @@ namespace cubthread
       }
   }
 }
-
+#undef new
 #endif // !_THREAD_LOCKFREE_HASH_MAP_HPP_

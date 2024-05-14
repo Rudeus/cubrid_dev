@@ -29,6 +29,8 @@
 #include <type_traits>
 
 #include <cassert>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // cubperf basic functionality
 //
@@ -626,5 +628,5 @@ namespace cubperf
   }
 
 } // namespace cubperf
-
+#undef new
 #endif // _PERF_HPP_

@@ -26,6 +26,8 @@
 #include "critical_section.h"
 
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubsync
 {
@@ -68,5 +70,5 @@ namespace cubsync
   };
 
 } // namespace cubsync
-
+#undef new
 #endif // _CRITICAL_SECTION_TRACKER_HPP_

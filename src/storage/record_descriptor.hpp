@@ -30,6 +30,8 @@
 #include "storage_common.h"
 
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 namespace cubthread
@@ -176,5 +178,5 @@ record_descriptor::set_data_to_object (const T &t)
 {
   set_data (reinterpret_cast<const char *> (&t), sizeof (t));
 }
-
+#undef new
 #endif // !_RECORD_DESCRIPTOR_HPP_

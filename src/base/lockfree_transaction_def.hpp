@@ -21,6 +21,8 @@
 
 #include <cstddef>
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -33,4 +35,5 @@ namespace lockfree
     using id = std::uint64_t;
   }
 }
+#undef new
 #endif // !_LOCKFREE_TRANSACTION_DEF_HPP_

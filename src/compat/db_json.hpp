@@ -30,6 +30,8 @@
 
 #include <cstdint>
 #include <string>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 struct or_buf;
@@ -190,5 +192,5 @@ db_json_convert_string_and_call (const char *json_raw, size_t json_raw_length, F
 }
 
 #endif /* defined (__cplusplus) */
-
+#undef new
 #endif /* _DB_JSON_HPP_ */

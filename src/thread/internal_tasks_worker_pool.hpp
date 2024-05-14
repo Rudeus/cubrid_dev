@@ -24,6 +24,8 @@
 #define _INTERNAL_TASKS_WORKER_POOL_HPP_
 
 #include "thread_manager.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubthread
 {
@@ -34,5 +36,5 @@ namespace cubthread
     entry_workpool *get_instance ();
   }
 }
-
+#undef new
 #endif // _INTERNAL_TASKS_WORKER_POOL_HPP_

@@ -26,6 +26,8 @@
 #include "file_io.h"
 #include "log_storage.hpp"
 #include "storage_common.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 typedef struct log_archives LOG_ARCHIVES;
 struct log_archives
@@ -67,5 +69,5 @@ struct background_archiving_info
 };
 
 // todo - move from log_impl.h
-
+#undef new
 #endif // !_LOG_ARCHIVES_HPP_

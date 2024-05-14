@@ -24,6 +24,8 @@
 #define _LOG_VOLIDS_HPP_
 
 #include "storage_common.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /*
  * NOTE: NULL_VOLID generally means a bad volume identifier
@@ -55,5 +57,5 @@ const VOLID LOG_DBLOG_ARCHIVE_VOLID = LOG_DBFIRST_VOLID - 20;
 const VOLID LOG_DBCOPY_VOLID = LOG_DBFIRST_VOLID - 19;
 /* Volid of double write buffer */
 const VOLID LOG_DBDWB_VOLID = LOG_DBFIRST_VOLID - 22;
-
+#undef new
 #endif // !_LOG_VOLIDS_HPP_

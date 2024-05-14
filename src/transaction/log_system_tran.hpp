@@ -27,6 +27,8 @@
 #include "log_lsa.hpp"
 
 #include <functional>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 struct log_tdes;
 struct log_lsa;
@@ -64,5 +66,5 @@ class log_system_tdes
   private:
     log_tdes *m_tdes;
 };
-
+#undef new
 #endif // _LOG_SYSTEM_TRAN_HPP_

@@ -39,6 +39,8 @@
 
 #include <atomic>
 #include <mutex>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 namespace lockfree
@@ -86,5 +88,5 @@ namespace lockfree
     };
   } // namespace tran
 } // namespace lockfree
-
+#undef new
 #endif // _LOCKFREE_TRANSACTION_TABLE_HPP_

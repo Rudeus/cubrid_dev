@@ -30,6 +30,8 @@
 #include <cassert>
 #include <cinttypes>
 #include <cstddef>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 struct log_lsa
 {
@@ -190,5 +192,5 @@ LSA_GT (const log_lsa *plsa1, const log_lsa *plsa2)
   assert (plsa1 != NULL && plsa2 != NULL);
   return *plsa1 > *plsa2;
 }
-
+#undef new
 #endif  // _LOG_LSA_HPP_

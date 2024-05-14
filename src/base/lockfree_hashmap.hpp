@@ -35,6 +35,8 @@
 #include <limits>
 #include <mutex>
 #include <ostream>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace lockfree
 {
@@ -1441,5 +1443,5 @@ namespace lockfree
     return *this;
   }
 } // namespace lockfree
-
+#undef new
 #endif // !_LOCKFREE_HASHMAP_HPP_

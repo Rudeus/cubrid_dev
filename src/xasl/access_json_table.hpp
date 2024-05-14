@@ -30,6 +30,8 @@
 
 #include "json_table_def.h"
 #include "object_domain.h"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward declarations
 struct db_value;
@@ -112,5 +114,5 @@ namespace cubxasl
 using json_table_column = cubxasl::json_table::column;
 using json_table_node = cubxasl::json_table::node;
 using json_table_spec_node = cubxasl::json_table::spec_node;
-
+#undef new
 #endif // _ACCESS_JSON_TABLE_H_

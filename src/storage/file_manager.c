@@ -64,8 +64,8 @@
 #include "fault_injection.h"
 #include "thread_manager.hpp"	// for thread_get_thread_entry_info
 #include "partition_sr.h"
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 
 /************************************************************************/
 /* Define structures, globals, and macro's                              */

@@ -26,6 +26,8 @@
 #include "dbtype_def.h"
 
 #include <stdio.h>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #ifdef __cplusplus
 extern "C"
@@ -52,5 +54,5 @@ extern "C"
 #ifdef __cplusplus
 }				// extern "C"
 #endif				// __cplusplus
-
+#undef new
 #endif				// !_DB_SET_H_

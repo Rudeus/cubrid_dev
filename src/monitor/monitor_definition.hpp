@@ -26,6 +26,8 @@
 #include <chrono>
 
 #include <cstdint>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmonitor
 {
@@ -43,5 +45,5 @@ namespace cubmonitor
   const fetch_mode FETCH_TRANSACTION_SHEET = false;
 
 } // namespace cubmonitor
-
+#undef new
 #endif // _MONITOR_DEFINITION_HPP_

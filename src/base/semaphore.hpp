@@ -25,6 +25,8 @@
 
 #include <condition_variable>
 #include <mutex>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubsync
 {
@@ -104,5 +106,5 @@ namespace cubsync
   };
 
 } // namespace cubsync
-
+#undef new
 #endif // _SEMAPHORE_HPP_

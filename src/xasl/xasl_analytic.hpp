@@ -27,6 +27,8 @@
 #include "db_function.hpp"          // FUNC_CODE
 #include "regu_var.hpp"             // regu_variable_node
 #include "storage_common.h"       // QUERY_OPTIONS
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 struct qfile_list_id;
@@ -114,5 +116,5 @@ using ANALYTIC_PERCENTILE_FUNCTION_INFO = cubxasl::analytic_percentile_function_
 using ANALYTIC_FUNCTION_INFO = cubxasl::analytic_function_info;
 using ANALYTIC_TYPE = cubxasl::analytic_list_node;
 using ANALYTIC_EVAL_TYPE = cubxasl::analytic_eval_type;
-
+#undef new
 #endif // _XASL_ANALYTIC_HPP_

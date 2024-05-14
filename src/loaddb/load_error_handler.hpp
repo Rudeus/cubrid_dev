@@ -29,6 +29,8 @@
 
 #include <memory>
 #include <string>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -223,5 +225,5 @@ namespace cubload
     return log_msg;
   }
 } // namespace cubload
-
+#undef new
 #endif /* _LOAD_ERROR_HANDLER_HPP_ */

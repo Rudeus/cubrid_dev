@@ -27,6 +27,10 @@
 #include "mem_block.hpp"
 
 #include <memory>
+#include <cassert>
+#include <cstring>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmem
 {
@@ -104,9 +108,6 @@ namespace cubmem
 /************************************************************************/
 /* Implementation                                                       */
 /************************************************************************/
-
-#include <cassert>
-#include <cstring>
 
 namespace cubmem
 {
@@ -304,5 +305,5 @@ namespace cubmem
   }
 
 } // namespace cubmem
-
+#undef new
 #endif /* !EXTENSIBLE_ARRAY_HPP_ */

@@ -38,6 +38,8 @@
 
 #include <mutex>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 template <typename T>
@@ -444,5 +446,5 @@ thread_sleep (double millisec)
   std::chrono::duration<double, std::milli> duration_millis (millisec);
   thread_sleep_for (duration_millis);
 }
-
+#undef new
 #endif  // _THREAD_MANAGER_HPP_

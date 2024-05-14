@@ -32,6 +32,8 @@
 #include <vector>
 #include <string>
 #include <utility>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definition
 struct or_buf;
@@ -502,5 +504,5 @@ namespace cubpacking
     unpack_overloaded (std::forward<T> (t));
   }
 } // namespace cubpacking
-
+#undef new
 #endif /* _PACKER_HPP_ */

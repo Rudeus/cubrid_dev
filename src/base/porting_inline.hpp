@@ -22,6 +22,8 @@
 
 #ifndef _PORTING_INLINE_HPP_
 #define _PORTING_INLINE_HPP_
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #if !defined (__GNUC__)
 #define __attribute__(X)
@@ -45,5 +47,5 @@
 #define STATIC_INLINE static
 #define INLINE
 #endif
-
+#undef new
 #endif // _PORTING_INLINE_HPP_

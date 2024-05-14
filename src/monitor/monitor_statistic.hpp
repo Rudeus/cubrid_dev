@@ -78,6 +78,8 @@
 #include <limits>
 
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmonitor
 {
@@ -591,5 +593,5 @@ namespace cubmonitor
   }
 
 } // namespace cubmonitor
-
+#undef new
 #endif // _MONITOR_STATISTIC_HPP_

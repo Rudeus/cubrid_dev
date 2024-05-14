@@ -34,8 +34,8 @@
 // To bring this file into the scope of memory monitoring, the usage of
 // `placement new` needs to be removed.
 
-// XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
+#define new new(__FILE__, __LINE__)
 #endif
 
 btree_unique_stats::btree_unique_stats (stat_type keys, stat_type nulls /* = 0 */)

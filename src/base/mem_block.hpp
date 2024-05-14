@@ -40,6 +40,8 @@
 
 #include <cassert>
 #include <cinttypes>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmem
 {
@@ -453,5 +455,5 @@ namespace cubmem
     return m_use_stack ? m_stack.get_read_ptr () : m_ext_block.get_read_ptr ();
   }
 } // namespace cubmem
-
+#undef new
 #endif // _MEM_BLOCK_HPP_

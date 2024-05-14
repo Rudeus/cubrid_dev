@@ -30,6 +30,8 @@
 #include <mutex>
 #include <unordered_map>
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -112,5 +114,5 @@ namespace cubload
   };
 
 } // namespace cubload
-
+#undef new
 #endif /* _LOAD_CLASS_REGISTRY_HPP_ */

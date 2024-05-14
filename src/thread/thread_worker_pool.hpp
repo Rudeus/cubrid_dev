@@ -47,6 +47,8 @@
 
 #include <cassert>
 #include <cstring>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubthread
 {
@@ -1591,5 +1593,5 @@ namespace cubthread
 
 
 
-
+#undef new
 #endif // _THREAD_WORKER_POOL_HPP_

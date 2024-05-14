@@ -30,6 +30,8 @@
 #include "memory_private_allocator.hpp"
 
 #include <vector>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubload
 {
@@ -120,4 +122,5 @@ namespace cubload
   };
 
 } // namespace cubload
+#undef new
 #endif /* _LOAD_SERVER_LOADER_HPP_ */

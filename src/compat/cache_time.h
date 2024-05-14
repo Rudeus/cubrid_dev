@@ -24,6 +24,8 @@
 #define _CACHE_TIME_H_
 
 #ident "$Id$"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 typedef struct cache_time CACHE_TIME;
 struct cache_time
@@ -81,5 +83,5 @@ struct cache_time
         } \
     } \
   while (0)
-
+#undef new
 #endif /* _CACHE_TIME_T_ */

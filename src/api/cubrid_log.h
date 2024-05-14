@@ -27,6 +27,8 @@
 
 #include <stdint.h>
 #include <time.h>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define CUBRID_LOG_UNAVAILABLE_CDC_SERVER        (-34)
 #define CUBRID_LOG_FAILED_LOGIN                 (-33)
@@ -152,5 +154,5 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-
+#undef new
 #endif				/* _CUBRID_LOG_H_ */

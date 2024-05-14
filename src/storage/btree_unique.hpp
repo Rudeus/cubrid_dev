@@ -27,6 +27,8 @@
 
 #include <cstdint>
 #include <map>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 // forward definitions
 class string_buffer;
@@ -104,5 +106,5 @@ class multi_index_unique_stats
   private:
     container_type m_stats_map;
 };
-
+#undef new
 #endif // !_BTREE_UNIQUE_HPP_
