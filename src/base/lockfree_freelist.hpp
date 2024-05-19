@@ -539,5 +539,5 @@ namespace lockfree
     return m_t;
   }
 } // namespace lockfree
-
+#undef new
 #endif // !_LOCKFREE_FREELIST_HPP_
