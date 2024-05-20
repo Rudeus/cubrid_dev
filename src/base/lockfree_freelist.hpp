@@ -539,5 +539,10 @@ namespace lockfree
     return m_t;
   }
 } // namespace lockfree
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_FREELIST_HPP_

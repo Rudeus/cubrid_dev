@@ -116,5 +116,10 @@ using ANALYTIC_PERCENTILE_FUNCTION_INFO = cubxasl::analytic_percentile_function_
 using ANALYTIC_FUNCTION_INFO = cubxasl::analytic_function_info;
 using ANALYTIC_TYPE = cubxasl::analytic_list_node;
 using ANALYTIC_EVAL_TYPE = cubxasl::analytic_eval_type;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _XASL_ANALYTIC_HPP_

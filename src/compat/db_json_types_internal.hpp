@@ -68,5 +68,10 @@ class JSON_DOC : public rapidjson::GenericDocument <JSON_ENCODING, JSON_PRIVATE_
 
 JSON_VALUE &db_json_doc_to_value (JSON_DOC &doc);
 const JSON_VALUE &db_json_doc_to_value (const JSON_DOC &doc);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_DB_JSON_TYPES_INTERNAL_HPP

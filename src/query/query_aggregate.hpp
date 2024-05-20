@@ -159,5 +159,10 @@ SCAN_CODE qdata_load_agg_hentry_from_list (cubthread::entry *thread_p, qfile_lis
     tp_domain **key_dom, cubxasl::aggregate_accumulator_domain **acc_dom);
 int qdata_save_agg_htable_to_list (cubthread::entry *thread_p, mht_table *hash_table, qfile_list_id *tuple_list_id,
 				   qfile_list_id *partial_list_id, db_value *temp_dbval_array);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _QUERY_AGGREGATE_HPP_

@@ -446,5 +446,10 @@ thread_sleep (double millisec)
   std::chrono::duration<double, std::milli> duration_millis (millisec);
   thread_sleep_for (duration_millis);
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif  // _THREAD_MANAGER_HPP_

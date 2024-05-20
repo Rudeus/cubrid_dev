@@ -132,5 +132,10 @@ using UPDDEL_MVCC_COND_REEVAL = cubquery::upddel_mvcc_cond_reeval;
 using MVCC_UPDDEL_REEV_DATA = cubquery::mvcc_update_reev_data;
 using MVCC_SCAN_REEV_DATA = cubquery::mvcc_scan_reev_data;
 using MVCC_REEV_DATA = cubquery::mvcc_reev_data;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _QUERY_REEVALUATION_HPP_

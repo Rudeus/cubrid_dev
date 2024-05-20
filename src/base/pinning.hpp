@@ -88,5 +88,10 @@ namespace cubbase
   };
 
 } /* namespace cubbase */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _PINNING_HPP_ */

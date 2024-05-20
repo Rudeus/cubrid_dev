@@ -105,5 +105,10 @@ namespace cubload
   }; // class driver
 
 } // namespace cubload
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_DRIVER_HPP_ */

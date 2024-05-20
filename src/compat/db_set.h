@@ -54,5 +54,10 @@ extern "C"
 #ifdef __cplusplus
 }				// extern "C"
 #endif				// __cplusplus
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				// !_DB_SET_H_

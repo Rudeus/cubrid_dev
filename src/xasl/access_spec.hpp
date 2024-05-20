@@ -146,5 +146,10 @@ range_reverse (RANGE &range)
       break;
     }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _ACCESS_SPEC_HPP_

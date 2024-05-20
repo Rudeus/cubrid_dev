@@ -54,5 +54,10 @@ namespace cubbase
 
   std::ostream &operator<< (std::ostream &os, const fileline_location &fileline);
 } // namespace cubbase
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _FILELINE_LOCATION_HPP_

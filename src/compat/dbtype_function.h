@@ -399,5 +399,10 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif				/* C++ */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				/* _NO_INLINE_DBTYPE_FUNCTION_ */

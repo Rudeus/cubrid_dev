@@ -90,5 +90,10 @@ static const LF_BITMAP_STYLE LF_BITMAP_LIST_OF_CHUNKS = LF_BITMAP_STYLE::LIST_OF
 
 #define LF_BITMAP_COUNT_ALIGN(count) \
     (((count) + (LF_BITFIELD_WORD_SIZE) - 1) & ~((LF_BITFIELD_WORD_SIZE) - 1))
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_BITMAP_HPP_

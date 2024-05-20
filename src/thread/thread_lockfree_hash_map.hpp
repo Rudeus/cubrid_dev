@@ -359,5 +359,10 @@ namespace cubthread
       }
   }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_THREAD_LOCKFREE_HASH_MAP_HPP_

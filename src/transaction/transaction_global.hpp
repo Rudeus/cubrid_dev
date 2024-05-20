@@ -29,5 +29,10 @@
 
 const int LOG_SYSTEM_TRAN_INDEX = 0;	/* The recovery & vacuum worker system transaction index. */
 const TRANID LOG_SYSTEM_TRANID = 0;	/* The recovery & vacuum worker system transaction. */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _TRANSACTION_GLOBAL_HPP_

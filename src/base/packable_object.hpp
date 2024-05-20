@@ -49,5 +49,10 @@ namespace cubpacking
   };
 
 } /* namespace cubpacking */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _PACKABLE_OBJECT_HPP_ */

@@ -42,5 +42,10 @@ namespace cubload
 
   void worker_manager_get_stats (UINT64 *stats_out);
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_WORKER_MANAGER_HPP_ */

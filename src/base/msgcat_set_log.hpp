@@ -59,5 +59,10 @@
 #define MSGCAT_LOG_UPTODATE_ERROR                       28
 #define MSGCAT_LOG_LOGINFO_COMMENT_UNUSED_ARCHIVE_NAME	29
 #define MSGCAT_LOG_MAX_ARCHIVES_HAS_BEEN_EXCEEDED	30
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MSGCAT_SET_LOG_HPP_

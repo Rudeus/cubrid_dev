@@ -455,5 +455,10 @@ namespace cubmem
     return m_use_stack ? m_stack.get_read_ptr () : m_ext_block.get_read_ptr ();
   }
 } // namespace cubmem
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MEM_BLOCK_HPP_

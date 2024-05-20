@@ -1443,5 +1443,10 @@ namespace lockfree
     return *this;
   }
 } // namespace lockfree
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_HASHMAP_HPP_

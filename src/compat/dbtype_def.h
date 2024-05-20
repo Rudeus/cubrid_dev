@@ -1260,5 +1260,10 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif				/* __cplusplus */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				/* _DBTYPE_DEF_H_ */

@@ -154,5 +154,10 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				/* _CUBRID_LOG_H_ */

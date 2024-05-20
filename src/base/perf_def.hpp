@@ -144,5 +144,10 @@ namespace cubperf
   using atomic_stat_counter_and_timer = generic_stat_counter_and_timer<true>;
 
 } // namespace cubperf
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _PERF_DEF_HPP_

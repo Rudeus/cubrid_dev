@@ -168,5 +168,10 @@ namespace lockfree
     return address_marker (addr).get_address ();
   }
 } // namespace lockfree
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_ADDRESS_MARKER_HPP_

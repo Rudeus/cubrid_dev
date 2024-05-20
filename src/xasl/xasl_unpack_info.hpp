@@ -92,5 +92,10 @@ xasl_stream_get_ptr_block (const void *ptr)
 {
   return static_cast<int> ((((UINTPTR) ptr) / sizeof (UINTPTR)) % MAX_PTR_BLOCKS);
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_XASL_UNPACK_INFO_HPP_

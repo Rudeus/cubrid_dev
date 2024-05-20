@@ -437,5 +437,10 @@ using load_status = cubload::load_status;
 	 (strncasecmp ((class_name), "glo", MAX(strlen(class_name), 3)) == 0      || \
 	  strncasecmp ((class_name), "glo_name", MAX(strlen(class_name), 8)) == 0  || \
 	  strncasecmp ((class_name), "glo_holder", MAX(strlen(class_name), 10)) == 0)
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_COMMON_HPP_ */

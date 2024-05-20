@@ -38,5 +38,10 @@ namespace cubload
   conv_func &get_conv_func (const data_type ldr_type, const DB_TYPE db_type);
 
 } // namespace cubload
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_DB_VALUE_CONVERTER_HPP_ */

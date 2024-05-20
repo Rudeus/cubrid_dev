@@ -116,5 +116,10 @@ namespace cuberr
       bool m_destroyed;                             // set to true on destruction
   };
 } // namespace cuberr
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _ERROR_CONTEXT_HPP_

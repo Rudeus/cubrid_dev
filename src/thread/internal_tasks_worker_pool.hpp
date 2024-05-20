@@ -36,5 +36,10 @@ namespace cubthread
     entry_workpool *get_instance ();
   }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _INTERNAL_TASKS_WORKER_POOL_HPP_

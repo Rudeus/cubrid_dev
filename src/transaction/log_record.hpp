@@ -467,5 +467,10 @@ struct log_rec_supplement
    || ((type) == LOG_MVCC_REDO_DATA) \
    || ((type) == LOG_MVCC_UNDOREDO_DATA) \
    || ((type) == LOG_MVCC_DIFF_UNDOREDO_DATA))
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _LOG_RECORD_HPP_

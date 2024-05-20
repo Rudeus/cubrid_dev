@@ -253,5 +253,10 @@ struct log_arv_header
   {
   }
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOG_STORAGE_HPP_

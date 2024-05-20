@@ -192,5 +192,10 @@ LSA_GT (const log_lsa *plsa1, const log_lsa *plsa2)
   assert (plsa1 != NULL && plsa2 != NULL);
   return *plsa1 > *plsa2;
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif  // _LOG_LSA_HPP_

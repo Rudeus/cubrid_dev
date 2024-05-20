@@ -225,5 +225,10 @@ namespace cubload
     return log_msg;
   }
 } // namespace cubload
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_ERROR_HANDLER_HPP_ */

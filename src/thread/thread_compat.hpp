@@ -44,6 +44,11 @@ typedef std::thread::id thread_id_t;
 // client or SA_MODE annoying grammars
 typedef void THREAD_ENTRY;
 typedef unsigned long int thread_id_t;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // not SERVER_MODE and not SA_MODE
 

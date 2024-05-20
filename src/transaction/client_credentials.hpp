@@ -102,5 +102,10 @@ struct boot_client_credential : public clientids
   virtual void pack (cubpacking::packer &serializator) const override;
   virtual void unpack (cubpacking::unpacker &deserializator) override;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_CLIENT_CREDENTIALS_HPP_

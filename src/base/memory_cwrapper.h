@@ -189,5 +189,12 @@ cub_strdup (const char *str, const char *file, const int line)
 #define free(ptr) cub_free(ptr)
 #endif // SERVER_MODE
 #endif // !WINDOWS
-
+#else // _MEMORY_CWRAPPER_H_
+#if defined (SERVER_MODE) && !defined(WINDOWS)
+#define malloc(sz) cub_alloc(sz, __FILE__, __LINE__)
+#define calloc(num, sz) cub_calloc(num, sz, __FILE__, __LINE__)
+#define realloc(ptr, sz) cub_realloc(ptr, sz, __FILE__, __LINE__)
+#define strdup(str) cub_strdup(str, __FILE__, __LINE__)
+#define free(ptr) cub_free(ptr)
+#endif
 #endif // _MEMORY_CWRAPPER_H_

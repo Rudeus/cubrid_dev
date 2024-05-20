@@ -70,5 +70,10 @@ namespace cubsync
   };
 
 } // namespace cubsync
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _CRITICAL_SECTION_TRACKER_HPP_

@@ -135,5 +135,10 @@ namespace cubload
       T *append_list (T *head, T *tail);
   }; // class semantic_helper
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_SEMANTIC_HELPER_HPP_ */

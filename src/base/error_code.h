@@ -1754,5 +1754,10 @@
  * cci repository source (src/cci/base_error_code.h) must be updated,
  * becuase CCI source and Engine source have been separated.
  */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _ERROR_CODE_H_ */

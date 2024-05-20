@@ -504,5 +504,10 @@ namespace cubpacking
     unpack_overloaded (std::forward<T> (t));
   }
 } // namespace cubpacking
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _PACKER_HPP_ */

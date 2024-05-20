@@ -83,5 +83,10 @@ struct cache_time
         } \
     } \
   while (0)
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _CACHE_TIME_T_ */

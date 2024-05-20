@@ -138,5 +138,10 @@ class ovfp_threshold_mgr
     }
 };
 #endif // #if defined (SERVER_MODE)
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _OVFP_THRESHOLD_MONITOR_H_ */

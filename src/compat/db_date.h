@@ -111,5 +111,10 @@ extern int db_get_day_of_week (int year, int month, int day);
 extern int db_get_week_of_year (int year, int month, int day, int mode);
 extern int db_check_time_date_format (const char *format_s);
 extern int db_add_weeks_and_days_to_date (int *day, int *month, int *year, int weeks, int day_week);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _DB_DATE_H_ */

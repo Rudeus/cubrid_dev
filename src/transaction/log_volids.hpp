@@ -57,5 +57,10 @@ const VOLID LOG_DBLOG_ARCHIVE_VOLID = LOG_DBFIRST_VOLID - 20;
 const VOLID LOG_DBCOPY_VOLID = LOG_DBFIRST_VOLID - 19;
 /* Volid of double write buffer */
 const VOLID LOG_DBDWB_VOLID = LOG_DBFIRST_VOLID - 22;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOG_VOLIDS_HPP_

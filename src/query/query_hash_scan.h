@@ -173,5 +173,10 @@ extern EH_SEARCH fhs_search (THREAD_ENTRY * thread_p, HASH_LIST_SCAN * hlsid, TF
 extern EH_SEARCH fhs_search_next (THREAD_ENTRY * thread_p, HASH_LIST_SCAN * hlsid, TFTID * value_ptr);
 extern void fhs_dump (THREAD_ENTRY * thread_p, FHSID * fhsid);
 /* end : FILE HASH SCAN */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _QUERY_HASH_SCAN_H_ */

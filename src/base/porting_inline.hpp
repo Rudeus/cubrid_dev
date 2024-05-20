@@ -47,5 +47,10 @@
 #define STATIC_INLINE static
 #define INLINE
 #endif
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _PORTING_INLINE_HPP_

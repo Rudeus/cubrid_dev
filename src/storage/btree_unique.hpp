@@ -106,5 +106,10 @@ class multi_index_unique_stats
   private:
     container_type m_stats_map;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_BTREE_UNIQUE_HPP_

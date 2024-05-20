@@ -163,5 +163,10 @@ namespace cubmem
     clear ();
   }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MEMORY_REFERENCE_STORE_HPP_

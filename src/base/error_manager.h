@@ -357,5 +357,10 @@ namespace cuberr
 // NOTE - if used after jumps, expect "crosses initialization" errors
 #define ER_SAFE_INIT(msg_file, exit_arg) cuberr::manager cuberr_manager (msg_file, exit_arg)
 #endif				// c++
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				/* _ERROR_MANAGER_H_ */

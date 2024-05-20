@@ -112,5 +112,10 @@ using AGGREGATE_TYPE = cubxasl::aggregate_list_node;
 using AGGREGATE_DIST_PERCENT_INFO = cubxasl::aggregate_dist_percent_info;
 using AGGREGATE_ACCUMULATOR_DOMAIN = cubxasl::aggregate_accumulator_domain;
 #endif // server or SA mode
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _XASL_AGGREGATE_HPP_

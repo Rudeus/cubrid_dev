@@ -114,5 +114,10 @@ struct mvcc_active_tran
     void set_bitarea_mvccid (MVCCID mvccid);
     void cleanup_migrate_to_long_transations ();
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_MVCC_ACTIVE_TRAN_HPP_

@@ -150,5 +150,10 @@ template<typename... Args> int string_buffer::operator() (Args &&... args)
 
   return len;
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _STRING_BUFFER_HPP_ */

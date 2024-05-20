@@ -365,5 +365,10 @@ namespace cubmem
 } // namespace cubmem
 
 
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MEMORY_PRIVATE_ALLOCATOR_HPP_

@@ -73,5 +73,10 @@ namespace lockfree
     };
   } // namespace tran
 } // namespace lockfree
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_TRANSACTION_RECLAIMABLE_HPP_

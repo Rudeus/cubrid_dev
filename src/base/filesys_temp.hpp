@@ -36,5 +36,10 @@ namespace filesys //File System
   //opens a new file in OS's tmp folder; return file name & FILE*
   std::pair<std::string, FILE *> open_temp_file (const char *prefix, const char *mode="w", int flags=0);
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif //_FILESYS_TEMP_H_

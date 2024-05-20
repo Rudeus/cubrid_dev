@@ -37,5 +37,10 @@ struct tran_query_exec_info
   char *sql_id;
   XASL_ID xasl_id;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_QUERY_MONITORING_HPP_

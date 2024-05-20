@@ -119,5 +119,10 @@ class JSON_PATH
 };
 
 int db_json_path_unquote_object_keys (std::string &sql_path);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _DB_JSON_HPP_ */

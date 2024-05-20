@@ -41,16 +41,16 @@ int mmon_initialize (const char *server_name)
   assert (mmon_Gl == nullptr);
   assert (server_name != nullptr);
 
-  if (prm_get_bool_value (PRM_ID_ENABLE_MEMORY_MONITORING))
+  //if (prm_get_bool_value (PRM_ID_ENABLE_MEMORY_MONITORING))
+  //{
+  mmon_Gl = new (std::nothrow) memory_monitor (server_name);
+  if (mmon_Gl == nullptr)
     {
-      mmon_Gl = new (std::nothrow) memory_monitor (server_name);
-      if (mmon_Gl == nullptr)
-	{
-	  er_set (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_OUT_OF_VIRTUAL_MEMORY, 1, sizeof (memory_monitor));
-	  error = ER_OUT_OF_VIRTUAL_MEMORY;
-	  return error;
-	}
+      er_set (ER_ERROR_SEVERITY, ARG_FILE_LINE, ER_OUT_OF_VIRTUAL_MEMORY, 1, sizeof (memory_monitor));
+      error = ER_OUT_OF_VIRTUAL_MEMORY;
+      return error;
     }
+  //}
   return error;
 }
 

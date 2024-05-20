@@ -171,5 +171,10 @@ namespace cubscan
 
 // naming convention of SCAN_ID's
 using JSON_TABLE_SCAN_ID = cubscan::json_table::scanner;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _SCAN_JSON_TABLE_HPP_

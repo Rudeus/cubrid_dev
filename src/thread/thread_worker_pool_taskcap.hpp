@@ -174,5 +174,10 @@ namespace cubthread
     m_capper.end_task ();
   }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_THREAD_WORKER_POOL_TASKCAP_HPP_

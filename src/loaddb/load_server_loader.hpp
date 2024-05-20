@@ -122,5 +122,10 @@ namespace cubload
   };
 
 } // namespace cubload
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOAD_SERVER_LOADER_HPP_ */

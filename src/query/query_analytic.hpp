@@ -47,5 +47,10 @@ namespace cubxasl
 int qdata_initialize_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, QUERY_ID query_id);
 int qdata_evaluate_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, val_descr *vd);
 int qdata_finalize_analytic_func (cubthread::entry *thread_p, cubxasl::analytic_list_node *func_p, bool is_same_group);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _QUERY_ANALYTIC_HPP_

@@ -80,5 +80,10 @@ namespace cubmem
   };
 
 } /* namespace mem */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _PINNABLE_BUFFER_HPP_ */

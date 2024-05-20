@@ -69,5 +69,10 @@ extern int logtb_collect_local_clients (int **local_client_pids);
 /************************************************************************/
 /* End of part shared with client.                                      */
 /************************************************************************/
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _LOG_COMMON_IMPL_H_

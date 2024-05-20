@@ -178,5 +178,10 @@ record_descriptor::set_data_to_object (const T &t)
 {
   set_data (reinterpret_cast<const char *> (&t), sizeof (t));
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_RECORD_DESCRIPTOR_HPP_

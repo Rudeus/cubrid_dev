@@ -52,5 +52,10 @@ struct compile_context
   bool recompile_xasl;
   SHA1Hash sha1;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _COMPILE_CONTEXT_H_

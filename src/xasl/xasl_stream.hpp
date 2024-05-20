@@ -174,5 +174,10 @@ static void stx_alloc_array (THREAD_ENTRY *thread_p, T *&ptr, std::size_t count)
 {
   ptr = (T *) stx_alloc_struct (thread_p, (int) (count * sizeof (T)));
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _XASL_STREAM_HPP_

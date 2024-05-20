@@ -45,5 +45,10 @@ namespace cubmonitor
   const fetch_mode FETCH_TRANSACTION_SHEET = false;
 
 } // namespace cubmonitor
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MONITOR_DEFINITION_HPP_

@@ -66,5 +66,10 @@ class log_system_tdes
   private:
     log_tdes *m_tdes;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _LOG_SYSTEM_TRAN_HPP_

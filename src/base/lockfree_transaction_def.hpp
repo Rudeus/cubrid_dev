@@ -35,5 +35,10 @@ namespace lockfree
     using id = std::uint64_t;
   }
 }
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOCKFREE_TRANSACTION_DEF_HPP_

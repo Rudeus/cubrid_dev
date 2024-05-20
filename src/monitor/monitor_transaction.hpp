@@ -273,5 +273,10 @@ namespace cubmonitor
   }
 
 } // namespace cubmonitor
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _MONITOR_TRANSACTION_HPP_

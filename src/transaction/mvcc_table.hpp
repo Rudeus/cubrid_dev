@@ -125,5 +125,10 @@ class mvcctable
     void advance_oldest_active (MVCCID next_oldest_active);
     MVCCID compute_oldest_visible_mvccid () const;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_MVCC_TABLE_H_

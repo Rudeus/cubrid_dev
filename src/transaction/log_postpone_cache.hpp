@@ -99,5 +99,10 @@ class log_postpone_cache
 
     bool is_full () const;
 };
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _LOG_POSTPONE_CACHE_HPP_ */

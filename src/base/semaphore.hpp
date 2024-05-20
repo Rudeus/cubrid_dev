@@ -106,5 +106,10 @@ namespace cubsync
   };
 
 } // namespace cubsync
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _SEMAPHORE_HPP_

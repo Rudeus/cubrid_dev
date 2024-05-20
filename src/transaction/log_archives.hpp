@@ -69,5 +69,10 @@ struct background_archiving_info
 };
 
 // todo - move from log_impl.h
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // !_LOG_ARCHIVES_HPP_

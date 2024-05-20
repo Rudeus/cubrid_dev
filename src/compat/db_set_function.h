@@ -92,5 +92,10 @@ extern "C"
 #ifdef __cplusplus
 }				// extern "C"
 #endif				// C++
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif				// !_DB_SET_FUNCTION_

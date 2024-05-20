@@ -192,5 +192,10 @@ db_json_convert_string_and_call (const char *json_raw, size_t json_raw_length, F
 }
 
 #endif /* defined (__cplusplus) */
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _DB_JSON_HPP_ */

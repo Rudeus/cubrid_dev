@@ -71,5 +71,10 @@ int lob_locator_drop (const char *locator);
 bool lob_locator_is_valid (const char *locator);
 const char *lob_locator_key (const char *locator);      // pointer in locator to key
 const char *lob_locator_meta (const char *locator);     // pointer in locator to meta
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _LOB_LOCATOR_HPP_

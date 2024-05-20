@@ -171,5 +171,10 @@ using COMP_EVAL_TERM = cubxasl::comp_eval_term;
 using ALSM_EVAL_TERM = cubxasl::alsm_eval_term;
 using LIKE_EVAL_TERM = cubxasl::like_eval_term;
 using RLIKE_EVAL_TERM = cubxasl::rlike_eval_term;
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _XASL_PREDICATE_HPP_

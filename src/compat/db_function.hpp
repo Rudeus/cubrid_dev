@@ -88,5 +88,10 @@ const char *fcode_get_uppercase_name (FUNC_CODE ftype);
 # ifdef  __cplusplus
 }
 # endif
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif // _DB_FUNCTION_HPP_

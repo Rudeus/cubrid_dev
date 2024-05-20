@@ -136,5 +136,10 @@ extern void flashback_set_request_done_time ();
 extern void flashback_set_status_active ();
 extern void flashback_set_status_inactive ();
 extern void flashback_reset ();
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _FLASHBACK_H_ */

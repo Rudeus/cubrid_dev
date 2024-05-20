@@ -42,5 +42,10 @@ extern int db_elo_delete (DB_ELO * elo);
 extern DB_BIGINT db_elo_size (DB_ELO * elo);
 extern int db_elo_read (const DB_ELO * elo, off_t pos, void *buf, size_t count, DB_BIGINT * read_bytes);
 extern int db_elo_write (DB_ELO * elo, off_t pos, const void *buf, size_t count, DB_BIGINT * written_bytes);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _DB_ELO_H_ */

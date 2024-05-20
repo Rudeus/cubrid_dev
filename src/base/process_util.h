@@ -29,5 +29,10 @@
 int
 create_child_process (const char *const argv[], int wait_flag, const char *stdin_file, char *stdout_file,
 		      char *stderr_file, int *exit_status);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
 #undef new
 #endif /* _PROCESS_UTIL_H_ */
