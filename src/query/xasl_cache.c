@@ -42,8 +42,8 @@
 
 #include <algorithm>
 #include <assert.h>
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define XCACHE_ENTRY_MARK_DELETED	    ((INT32) 0x80000000)
 #define XCACHE_ENTRY_TO_BE_RECOMPILED	    ((INT32) 0x40000000)

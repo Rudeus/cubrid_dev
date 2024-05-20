@@ -28,8 +28,8 @@
 
 #include <forward_list>
 #include <mutex>
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 std::mutex systb_Mutex;
 std::forward_list<log_tdes *> systb_Free_tdes_list;

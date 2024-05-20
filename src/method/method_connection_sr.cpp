@@ -30,8 +30,8 @@
 
 #include "object_representation.h" /* OR_ */
 #include "jsp_comm.h" /* jsp_writen() */
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubmethod
 {

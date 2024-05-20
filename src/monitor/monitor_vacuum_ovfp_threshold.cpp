@@ -30,8 +30,8 @@
 #include <assert.h>
 #include "heap_file.h"
 #include "monitor_vacuum_ovfp_threshold.hpp"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* *INDENT-OFF* */
 #define OID_COMPARE(a, b)  (((a)->volid != (b)->volid) ? ((a)->volid - (b)->volid) : \

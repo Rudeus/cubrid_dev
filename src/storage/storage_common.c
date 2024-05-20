@@ -37,8 +37,8 @@
 #include "tz_support.h"
 #include "db_date.h"
 #include "dbtype.h"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 /* RESERVED_SIZE_IN_PAGE should be aligned */
 #define RESERVED_SIZE_IN_PAGE   (sizeof (FILEIO_PAGE_RESERVED) + sizeof (FILEIO_PAGE_WATERMARK))

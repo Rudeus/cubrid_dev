@@ -28,8 +28,8 @@
 
 #include "oid.h"
 #include "schema_system_catalog_constants.h"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 typedef struct oid_cache_entry OID_CACHE_ENTRY;
 struct oid_cache_entry

@@ -40,8 +40,8 @@
 #include "set_object.h"
 #include "xserver_interface.h"
 #include "server_interface.h"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 static bool compact_started = false;
 static int last_tran_index = -1;

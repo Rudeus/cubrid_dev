@@ -19,8 +19,8 @@
 #include "method_def.hpp"
 
 #include "memory_private_allocator.hpp"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 method_sig_node::method_sig_node ()
 {

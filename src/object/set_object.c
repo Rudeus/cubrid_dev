@@ -48,8 +48,8 @@
 #include "parser.h"
 #else /* !SERVER_MODE */
 #endif
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 
 /* If this is the server stub out ws_pin.

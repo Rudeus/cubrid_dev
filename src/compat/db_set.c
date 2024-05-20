@@ -40,8 +40,8 @@
 #include <stdarg.h>
 #include <ctype.h>
 #include <string.h>
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define ERROR_SET(error, code) \
   do {                     \

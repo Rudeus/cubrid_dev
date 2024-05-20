@@ -78,8 +78,8 @@
 #include "xasl.h"
 #include "xasl_cache.h"
 #include "method_runtime_context.hpp"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 #define RMUTEX_NAME_TDES_TOPOP "TDES_TOPOP"
 

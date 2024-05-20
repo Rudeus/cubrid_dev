@@ -20,8 +20,8 @@
 
 #include "language_support.h"
 #include "chartype.h"
-// XXX: SHOULD BE INCLUDE THIS AT THE LAST INCLUDE SECTION
-#define new new(__FILE__, __LINE__)
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper.hpp"
 
 namespace cubbase
 {
