@@ -30,7 +30,10 @@
 #if defined (SERVER_MODE) || (defined (SA_MODE) && defined (__cplusplus))
 #include <thread>
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 #ifndef _THREAD_ENTRY_HPP_
 namespace cubthread
 {

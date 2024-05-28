@@ -30,7 +30,10 @@
 #include <functional>
 #include <vector>
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define NUM_LDR_TYPES (LDR_TYPE_MAX + 1)
 #define NUM_DB_TYPES (DB_TYPE_LAST + 1)

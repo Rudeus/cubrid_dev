@@ -41,6 +41,11 @@
 #include <stdio.h>
 #include <time.h>
 #include <map>
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define NULL_VOLDES   (-1)	/* Value of a null (invalid) vol descriptor */
 
@@ -633,4 +638,10 @@ extern int fileio_set_page_checksum (THREAD_ENTRY * thread_p, FILEIO_PAGE * io_p
 extern int fileio_page_check_corruption (THREAD_ENTRY * thread_p, FILEIO_PAGE * io_page, bool * is_page_corrupted);
 extern void fileio_page_hexa_dump (const char *data, int length);
 extern bool fileio_is_formatted_page (THREAD_ENTRY * thread_p, const char *io_page);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
+#undef new
 #endif /* _FILE_IO_H_ */

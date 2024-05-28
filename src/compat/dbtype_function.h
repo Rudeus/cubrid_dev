@@ -28,7 +28,10 @@
 #include "db_set_function.h"
 #include "dbtype_def.h"
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define DB_CURRENCY_DEFAULT db_get_currency_default()
 

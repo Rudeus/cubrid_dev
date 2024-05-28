@@ -28,7 +28,10 @@
 #include "regu_var.hpp"             // regu_variable_node
 #include "storage_common.h"       // QUERY_OPTIONS
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 // forward definitions
 struct qfile_list_id;

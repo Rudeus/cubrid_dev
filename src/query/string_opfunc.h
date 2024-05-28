@@ -42,6 +42,12 @@
 #else
 typedef struct cub_compiled_regex cub_compiled_regex;
 #endif
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
+
 
 #define QSTR_IS_CHAR(s)          (((s)==DB_TYPE_CHAR) || \
                                  ((s)==DB_TYPE_VARCHAR))
@@ -389,4 +395,10 @@ extern int db_string_to_base64 (DB_VALUE const *val, DB_VALUE * result);
 extern int db_string_from_base64 (DB_VALUE const *val, DB_VALUE * result);
 extern int db_string_extract_dbval (const MISC_OPERAND extr_operand, DB_VALUE * dbval_p, DB_VALUE * result_p,
 				    TP_DOMAIN * domain_p);
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
+#undef new
 #endif /* _STRING_OPFUNC_H_ */

@@ -31,6 +31,11 @@
 #include "language_support.h"
 
 #include "string_regex_constants.hpp"
+// XXX: SHOULD BE THE LAST INCLUDE HEADER
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define GET_RE2_OBJ(cr) (*(cr.compiled->re2_obj))
 #define GET_STD_OBJ(cr) (*(cr.compiled->std_obj))
@@ -158,5 +163,10 @@ namespace cubregex
 }
 
 using cub_compiled_regex = cubregex::compiled_regex;
-
+#undef malloc
+#undef calloc
+#undef realloc
+#undef strdup
+#undef free
+#undef new
 #endif // _STRING_REGEX_HPP_

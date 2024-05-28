@@ -30,7 +30,10 @@
 #include <codecvt>
 #include <string>
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 /* TODO: need to make compatible fully between CUBRID Language support and cpp standard locale */
 namespace cublocale

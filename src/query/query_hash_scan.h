@@ -29,7 +29,10 @@
 
 #include "regu_var.hpp"
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define MAKE_TUPLE_POSTION(tuple_pos, simple_pos, scan_id_p) \
   do \

@@ -41,7 +41,10 @@
 
 #include "error_code.h"
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 #define ARG_FILE_LINE           __FILE__, __LINE__
 #define ARG_FILE_LINE_FUNC      __FILE__, __LINE__, __func__

@@ -154,6 +154,7 @@ set (BASE_HEADERS
   ${BASE_DIR}/mem_block.hpp
   ${BASE_DIR}/memory_cwrapper.h
   ${BASE_DIR}/memory_wrapper.hpp
+  ${BASE_DIR}/memory_wrapper2.hpp
   ${BASE_DIR}/memory_monitor_common.hpp
   ${BASE_DIR}/memory_monitor_sr.hpp
   ${BASE_DIR}/memory_reference_store.hpp

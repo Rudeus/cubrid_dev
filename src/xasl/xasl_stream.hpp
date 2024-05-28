@@ -105,7 +105,10 @@ void stx_restore (THREAD_ENTRY *thread_p, char *&ptr, T *&target);
 
 #include <cassert>
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 inline int
 xasl_stream_make_align (int x)

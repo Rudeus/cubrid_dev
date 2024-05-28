@@ -23,7 +23,10 @@
 #ifndef _MSGCAT_SET_LOG_HPP_
 #define _MSGCAT_SET_LOG_HPP_
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 /*
  * Message id in the set MSGCAT_SET_LOG

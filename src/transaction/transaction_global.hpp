@@ -25,7 +25,10 @@
 
 #include "storage_common.h"
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 const int LOG_SYSTEM_TRAN_INDEX = 0;	/* The recovery & vacuum worker system transaction index. */
 const TRANID LOG_SYSTEM_TRANID = 0;	/* The recovery & vacuum worker system transaction. */

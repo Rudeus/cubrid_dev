@@ -23,7 +23,10 @@
 #ifndef _LOB_LOCATOR_HPP_
 #define _LOB_LOCATOR_HPP_
 // XXX: SHOULD BE THE LAST INCLUDE HEADER
-#include "memory_wrapper.hpp"
+#include "memory_wrapper2.hpp"
+#if defined(SERVER_MODE) && !defined(WINDOWS)
+#define new new(__FILE__, __LINE__)
+#endif
 
 /* there can be following transitions in transient lobs
 
